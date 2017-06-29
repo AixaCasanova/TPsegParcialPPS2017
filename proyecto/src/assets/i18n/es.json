@@ -1,0 +1,34 @@
+{
+    "acerca-de-page": {
+        "titulo": "Acerca de nosotros",
+        "descripcion": "<p>Somos el grupo de trabajo \"Los superdesarrolladores\" que desarrolló la aplicación de encuestas para la materia \"Práctica Prof. Supervisada\" de la carrera Técnico superior en programación de la UTN.</p><p>El desarrollo se implementó utilizando: Ionic 2 con TypeScript.</p><p>Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>",
+        "Dispositivo": "Dispositivo",
+        "Plataforma": "Plataforma",
+        "Integrantes": "Integrantes"
+    },
+    "login": {
+        "email": "Email",
+        "clave": "Clave",
+        "usuarios_test": "Usuarios test",
+        "iniciar_sesion": "Iniciar sesión",
+        "iniciando_sesion": "Iniciando sesión...",
+        "fallo": "Fallo",
+        "ok": "Ok",
+        "cancelar": "Cancelar",
+        "inicio_sesion_github_cancelado": "El inicio de sesión de Github fue cancelado",
+        "inicio_sesion_github_no_autorizado": "El inicio de sesión con Github no fue autorizado.",
+        "inicio_sesion_error": "Error al iniciar sesión: ",
+        "msg_no_internet": "Es probable que no tengas Internet. Chequea tu conexión.",
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos."
+    },
+    "alumno": {
+        "titulo": "Alumno",
+        "escanear": "Escanear",
+        "ver_mis_encuestas": "Ver mis encuestas:",
+        "pendientes": "Pendientes",
+        "pendientes_desc": "Muestra las encuestas que aún no se hicieron.",
+        "completadas": "Completadas",
+        "completadas_desc": "Muestra las encuestas que ya se completaron.",
+        "encuesta_no_asignada": "La encuesta no esta asignada al usuario o no existe.",
+    }
+}

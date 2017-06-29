@@ -12,6 +12,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
 import { Vibration } from '@ionic-native/vibration';
 import { AuthData } from '../providers/auth-data';
 import * as firebase from 'firebase/app';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     templateUrl: 'app.html'
@@ -24,7 +25,7 @@ export class MyApp {
     private authReady = false;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, private auth: servicioAuth,
-    private nativeAudio: NativeAudio,public vibration:Vibration, public authData: AuthData, private events: Events) {
+    private nativeAudio: NativeAudio,public vibration:Vibration, public authData: AuthData, private events: Events, private translate: TranslateService) {
         this.splashScreen = splashScreen
         platform.ready().then(() => {
             console.log('platformReady');
@@ -32,8 +33,19 @@ export class MyApp {
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             this.platformReady = true;
+            this.initializeTranslateServiceConfig();
             this.hideSplashScreen();
         });
+    }
+
+    initializeTranslateServiceConfig() {
+        var userLang = navigator.language.split('-')[0];
+        userLang = /(es|en|pr)/gi.test(userLang) ? userLang : 'es';
+
+        this.translate.setDefaultLang('es');
+
+        this.translate.use(userLang);
+        console.error('Userlang: ' + userLang);
     }
 
     ngOnInit() {

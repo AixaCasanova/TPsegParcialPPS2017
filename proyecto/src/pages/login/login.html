@@ -17,12 +17,12 @@
                             <ion-list>
                                 <ion-item>
                                     <ion-icon name="ios-person-outline" item-left></ion-icon>
-                                    <ion-input type="text" placeholder="Usuario" name="usuario" [(ngModel)]="Login.usuario" required></ion-input>
+                                    <ion-input type="text" placeholder="{{'login.email' | translate}}" name="usuario" [(ngModel)]="Login.usuario" required></ion-input>
                                 </ion-item>
 
                                 <ion-item>
                                     <ion-icon name="ios-key-outline" item-left></ion-icon>
-                                    <ion-input type="password" placeholder="Clave" name="clave" [(ngModel)]="Login.clave" required></ion-input>
+                                    <ion-input type="password" placeholder="{{'login.clave' | translate}}" name="clave" [(ngModel)]="Login.clave" required></ion-input>
                                 </ion-item>
                             </ion-list>
                         </ion-col>
@@ -31,11 +31,11 @@
                     <ion-row>
                         <ion-col class="signup-col">
                             <button ion-button class="submit-btn" color="primary-color" full type="submit" [disabled]="!loginForm.form.valid">
-                                Iniciar sesión
+                                {{"login.iniciar_sesion" | translate}}
                             </button>
 
                             <button ion-button margin-top color="dark" full type="button" (tap)="loginWithGithub()">
-                                Iniciar sesión&nbsp;
+                                {{"login.iniciar_sesion" | translate}}&nbsp;
                                 <ion-icon name="logo-github"></ion-icon>
                             </button>
                         </ion-col>
@@ -55,7 +55,7 @@
         <ion-buttons start left>
             <button ion-button icon-only (tap)="abrirActionSheet()">
                 <ion-icon name="ios-people-outline"></ion-icon>
-                Usuarios Test
+                {{"login.usuarios_test" | translate}}
             </button>
         </ion-buttons>
         <ion-buttons end right>

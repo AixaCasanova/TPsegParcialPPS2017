@@ -1,0 +1,9 @@
+{
+    "acerca-de-page": {
+        "titulo": "About us",
+        "descripcion": "<p>We are the team of \"Los superdesarrolladores\" developer of \"Encuestas UTN\" to the \"Práctica Prof. Supervisada\".</p><p>The developement was implemented with: Ionic 2 + TypeScript.</p><p>The animations Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>",
+        "Dispositivo": "Device",
+        "Plataforma": "Platform",
+        "Integrantes": "Team"
+    }
+}

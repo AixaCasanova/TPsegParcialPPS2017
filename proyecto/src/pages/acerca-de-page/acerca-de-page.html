@@ -7,7 +7,7 @@ Ionic pages and navigation.
 <ion-header>
 
     <ion-navbar color="primary">
-        <ion-title>Acerca de nosotros</ion-title>
+        <ion-title>{{ 'acerca-de-page.titulo' | translate }}</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -15,17 +15,15 @@ Ionic pages and navigation.
 
 <ion-content padding>
 
-    <p>Somos el grupo de trabajo "Los superdesarrolladores" que desarrolló la aplicación de encuestas para la materia "Práctica Prof. Supervisada" de la carrera Técnico superior en programación de la UTN.</p>
-    <p>El desarrollo se implementó utilizando: Ionic 2 con TypeScript.</p>
-    <p>Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>
+    <div [innerHTML]="'acerca-de-page.descripcion' | translate"></div>
 
-    <p *ngIf="device.model">Dispositivo: {{device.model}}</p>
-    <p *ngIf="device.model">Plataforma: {{device.platform}}</p>
+    <p *ngIf="device.model">{{ 'acerca-de-page.Dispositivo' | translate }}: {{device.model}}</p>
+    <p *ngIf="device.model">{{ 'acerca-de-page.Plataforma' | translate }}: {{device.platform}}</p>
 
 
     <ion-list>
         <ion-list-header>
-            <ion-title>Integrantes</ion-title>
+            <ion-title>{{ 'acerca-de-page.Integrantes' | translate }}</ion-title>
         </ion-list-header>
         <ion-item>
             <ion-avatar item-left>

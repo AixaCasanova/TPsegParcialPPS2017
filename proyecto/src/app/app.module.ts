@@ -2,10 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Login} from "../pages/login/login";
@@ -62,13 +58,19 @@ import { File } from '@ionic-native/file';
 import { EncuestaDetalle } from "../pages/encuesta-detalle/encuesta-detalle";
 import {Ayuda} from '../pages/ayuda/ayuda';
 
+/* Traducciones */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Http } from '@angular/http';
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     Login,
     Administrador,
     Administrativo,
@@ -101,24 +103,27 @@ import {Ayuda} from '../pages/ayuda/ayuda';
     Ayuda
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
-    ChartsModule,
-    IonicModule.forRoot(MyApp),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDg5RgxfKfydP2_yidVU7ZwUW21aIqPl0Y'
-    }),
-   AngularFireModule.initializeApp(firebaseconfig),
-   AngularFireAuthModule,
-   AngularFireDatabaseModule
-      ],
+      BrowserModule,
+      HttpModule,
+      ChartsModule,
+      IonicModule.forRoot(MyApp),
+      AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyDg5RgxfKfydP2_yidVU7ZwUW21aIqPl0Y'
+      }),
+      AngularFireModule.initializeApp(firebaseconfig),
+      AngularFireAuthModule,
+      AngularFireDatabaseModule,
+      TranslateModule.forRoot({
+          loader: {
+              provide: TranslateLoader,
+              useFactory: (createTranslateLoader),
+              deps: [Http]
+          }
+      })
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     Login,
     Administrador,
     Administrativo,
@@ -149,7 +154,7 @@ import {Ayuda} from '../pages/ayuda/ayuda';
     AcercaDePage,
     EncuestaDetalle,
     Ayuda
-    
+
       ],
   providers: [
     StatusBar,

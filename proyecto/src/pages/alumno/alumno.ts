@@ -6,6 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { AlumnoEncuestasPage } from "../alumno-encuestas/alumno-encuestas";
 import { EncuestaPage } from '../encuesta/encuesta';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Generated class for the Alumno page.
  *
@@ -21,13 +22,17 @@ export class Alumno {
 
     private usuarioLogueado;
     private encuestas = [];
+    private LANG;
 
-    constructor (public navCtrl: NavController, private auth: servicioAuth, public navParams: NavParams, private http: Http, private barcodeScanner: BarcodeScanner, public toastCtrl: ToastController) {
+    constructor (public navCtrl: NavController, private auth: servicioAuth, public navParams: NavParams, private http: Http, private barcodeScanner: BarcodeScanner, public toastCtrl: ToastController, private translate: TranslateService) {
         this.usuarioLogueado = this.auth.getUserInfo();
+
+        translate.stream('alumno').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     ionViewDidLoad () {
-        console.log('ionViewDidLoad Alumno');
     }
 
     public verEncuestas (tipo) : void {
@@ -78,7 +83,7 @@ export class Alumno {
                 });
 
             } else {
-                this.mostrarMensaje('La encuesta no esta asignada al usuario o no existe.', 5000, 'bottom');
+                this.mostrarMensaje(this.LANG.encuesta_no_asignada, 5000, 'bottom');
             }
 
         },

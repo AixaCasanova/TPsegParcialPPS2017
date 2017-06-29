@@ -13,6 +13,7 @@ import { Events } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Http } from '@angular/http';
 import * as firebase from 'firebase/app';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -32,11 +33,12 @@ export class Login {
 
     public loading: Loading;
     private browser;
+    private LANG;
 
     constructor(public navCtrl: NavController, private auth: servicioAuth,
         private alertCtrl: AlertController, private loadingCtrl: LoadingController,
         public authData: AuthData, private nativeAudio: NativeAudio,public vibration:Vibration,
-        public actionSheetCtrl: ActionSheetController, private events: Events, private iab: InAppBrowser, private http: Http)
+        public actionSheetCtrl: ActionSheetController, private events: Events, private iab: InAppBrowser, private http: Http, private translate: TranslateService)
         {
             this.nativeAudio.preloadSimple('uniqueId1', 'assets/okLogin.mp3');
             this.nativeAudio.preloadSimple('errlogin', 'assets/errLogin.mp3');
@@ -47,6 +49,11 @@ export class Login {
                     this.showError(text);
                 });
 
+            });
+
+            translate.stream('login').subscribe((res: string) => {
+                console.log('LOGIN LANGUAGE: ', res);
+                this.LANG = res;
             });
         }
 
@@ -66,7 +73,7 @@ export class Login {
                 if (error) {
 
                     this.loading.dismiss().then(() => {
-                        this.showError("El usuario no existe o ingresó datos invalidos.");
+                        this.showError(this.LANG.usuario_no_existe);
                     });
 
                 }
@@ -92,7 +99,7 @@ export class Login {
 
                 let msg = event.message;
                 if (event.message == 'net::ERR_NAME_NOT_RESOLVED') {
-                    msg = 'Es probable que no tengas Internet. Chequea tu conexión.';
+                    msg = this.LANG.msg_no_internet;
                 }
                 reject(msg);
             });
@@ -141,15 +148,15 @@ export class Login {
                                 // The firebase.auth.AuthCredential type that was used.
                                 var credential = error.credential;
                                 // ...
-                                reject("Error al iniciar sesión: " + errorMessage);
+                                reject(this.LANG.inicio_sesion_error + errorMessage);
                             });
                         } else {
-                            reject("El inicio de sesión con Github no fue autorizado.");
+                            reject(this.LANG.inicio_sesion_github_no_autorizado);
 
                         }
 
                     }, (error: any) => {
-                        reject("El inicio de sesión de Github fue cancelado");
+                        reject(this.LANG.inicio_sesion_github_cancelado);
                         console.log('post:error: ', error);
                     });
 
@@ -164,7 +171,7 @@ export class Login {
 
                 if (!ignorarExit) {
                     console.log('exit: ', event);
-                    reject("El inicio de sesión de Github fue cancelado");
+                    reject(this.LANG.inicio_sesion_github_cancelado);
                 }
 
                 ignorarExit = false;
@@ -183,8 +190,8 @@ export class Login {
             let alert = this.alertCtrl.create({
                 message: e,
                 buttons: [{
-                    text: "Ok",
-                    role: 'cancel'
+                    text: this.LANG.ok,
+                    role: this.LANG.cancelar
                 }]
             });
             this.vibration.vibrate([100,100,100]);
@@ -198,7 +205,7 @@ export class Login {
 
     showLoading(): Promise<any> {
         this.loading = this.loadingCtrl.create({
-            content: 'Iniciando sesión...',
+            content: this.LANG.iniciando_sesion,
             dismissOnPageChange: true
         });
         return this.loading.present();
@@ -206,9 +213,9 @@ export class Login {
 
     showError(text) {
         let alert = this.alertCtrl.create({
-            title: 'Fallo',
+            title: this.LANG.fallo,
             subTitle: text,
-            buttons: ['OK']
+            buttons: [this.LANG.ok]
         });
         alert.present(prompt);
     }
@@ -239,7 +246,7 @@ export class Login {
 
     abrirActionSheet () {
         let actionSheet = this.actionSheetCtrl.create({
-            title: 'Usuarios Test',
+            title: this.LANG.usuarios_test,
             buttons: [
                 {
                     text: 'Administrador',
