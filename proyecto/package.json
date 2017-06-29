@@ -35,6 +35,8 @@
     "@ionic-native/toast": "^3.10.3",
     "@ionic-native/vibration": "^3.12.1",
     "@ionic/storage": "2.0.1",
+    "@ngx-translate/core": "^7.0.0",
+    "@ngx-translate/http-loader": "^0.1.0",
     "angularfire2": "^4.0.0-rc.1",
     "chart.js": "^2.6.0",
     "firebase": "^4.1.2",
