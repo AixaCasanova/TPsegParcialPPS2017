@@ -29,6 +29,15 @@
         "pendientes_desc": "Muestra las encuestas que aún no se hicieron.",
         "completadas": "Completadas",
         "completadas_desc": "Muestra las encuestas que ya se completaron.",
-        "encuesta_no_asignada": "La encuesta no esta asignada al usuario o no existe.",
+        "encuesta_no_asignada": "La encuesta no esta asignada al usuario o no existe."
+    },
+    "administrador": {
+        "titulo": "Administrador"
+    },
+    "administrativo": {
+        "titulo": "Administrativo"
+    },
+    "profesor": {
+        "titulo": "Profesor"
     }
 }

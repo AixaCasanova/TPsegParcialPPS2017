@@ -45,13 +45,11 @@ export class MyApp {
         this.translate.setDefaultLang('es');
 
         this.translate.use(userLang);
-        console.error('Userlang: ' + userLang);
     }
 
     ngOnInit() {
 
         this.afAuth.authState.subscribe(user => {
-            console.log('authReady');
             this.authReady = true;
             this.hideSplashScreen();
 
