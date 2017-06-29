@@ -6,6 +6,7 @@ import { servicioAuth } from '../../servicioAuth/servicioAuth';
 import { Toast } from '@ionic-native/toast';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { Observable } from 'rxjs/Observable';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-enviarencuesta',
@@ -21,7 +22,9 @@ export class EnviarEncuesta {
 
     private cargando = false;
 
-    constructor(public navCtrl: NavController,public NavParams: NavParams,private http: Http, servAuth:servicioAuth,private toastCtrl: ToastController,private nativeAudio: NativeAudio)
+    private LANG;
+
+    constructor(public navCtrl: NavController,public NavParams: NavParams,private http: Http, servAuth:servicioAuth,private toastCtrl: ToastController,private nativeAudio: NativeAudio, private translate: TranslateService)
     {
         this.nativeAudio.preloadSimple('uniqueId1', '../assets/ingreso.mp3');
 
@@ -43,6 +46,10 @@ export class EnviarEncuesta {
 
         });
 
+        translate.stream('enviarencuesta').subscribe((res: string) => {
+            this.LANG = res;
+        });
+
     }
 
     getCursos() {
@@ -58,7 +65,7 @@ export class EnviarEncuesta {
     verToast() {
 
         this.toast = this.toastCtrl.create({
-            message: 'La encuesta se asignó al curso correctamente',
+            message: this.LANG.encuesta_asignada_ok,
             duration: 3000,
             position: 'top'
         });

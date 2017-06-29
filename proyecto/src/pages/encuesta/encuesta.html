@@ -12,7 +12,7 @@
     <ion-icon name="arrow-back"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>Encuesta: {{ encuesta.descripcion }}</ion-title>
+    <ion-title>{{ 'encuesta.titulo' | translate }}: {{ encuesta.descripcion }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,12 +28,12 @@
         <ion-list-header>Preguntas</ion-list-header>
         <button ion-item *ngFor="let pregunta of preguntas">
             <h2>{{ pregunta.descripcion }}</h2>
-            <p>Repuesta: {{ pregunta.respuesta_opcion }}</p>
+            <p>{{ 'encuesta.respuesta' | translate }}: {{ pregunta.respuesta_opcion }}</p>
         </button>
     </ion-list>
 
     <div *ngIf="!cargando && accion == 'responder'">
-        <h1>Preguntas</h1>
+        <h1>{{ 'encuesta.preguntas' | translate }}</h1>
         <ion-card no-padding class="animated pulse" *ngIf="pregunta_actual != null">
             <ion-card-header>
                 {{ pregunta_actual.descripcion }}
@@ -60,15 +60,15 @@
                 </ion-list>
 
                 <ion-item *ngIf="pregunta_actual.tipo == 'text'">
-                    <ion-label floating>Escriba su respuesta</ion-label>
+                    <ion-label floating>{{ 'encuesta.escriba_su_respuesta' | translate }}</ion-label>
                     <ion-input type="text" [(ngModel)]="pregunta_actual.respuesta_opcion"></ion-input>
                 </ion-item>
 
                 <ion-list *ngIf="pregunta_actual.tipo == 'select'">
                     <ion-item>
-                        <ion-label>Seleccione una opción</ion-label>
+                        <ion-label>{{ 'encuesta.seleccione_una_opcion' | translate }}</ion-label>
                         <ion-select [(ngModel)]="pregunta_actual.respuesta_opcion">
-                            <ion-option  value="">Seleccione una opción</ion-option>
+                            <ion-option  value="">{{ 'encuesta.seleccione_una_opcion' | translate }}</ion-option>
                             <ion-option *ngFor="let opcion of [1,2,3,4]">{{ pregunta_actual['opcion'+opcion] }}</ion-option>
                         </ion-select>
                     </ion-item>
@@ -78,7 +78,7 @@
 
             <ion-item no-padding>
                 <button (click)="siguientePregunta()" [disabled]="ocultarSiguientePregunte || estaSinResponder(pregunta_actual)" ion-button icon-right clear item-right>
-                    Siguiente pregunta
+                    {{ 'encuesta.siguiente_pregunta' | translate }}
                     <ion-icon name="ios-arrow-forward"></ion-icon>
                 </button>
             </ion-item>

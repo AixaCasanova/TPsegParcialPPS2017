@@ -3,7 +3,7 @@
         <button ion-button menuToggle left>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Asignador de Encuestas</ion-title>
+        <ion-title>{{ 'enviarencuesta.titulo' | translate }}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
 
         <ion-row class="animated pulse" align-items-start>
             <ion-col text-center>
-                <p>En esta sección usted podrá asignar encuestas a un curso.</p>
+                <p>{{ 'enviarencuesta.descripcion' | translate }}</p>
             </ion-col>
         </ion-row>
 
@@ -32,17 +32,17 @@
                         <ion-list>
 
                             <ion-item>
-                                <ion-label>Encuesta</ion-label>
+                                <ion-label>{{ 'enviarencuesta.encuesta' | translate }}</ion-label>
                                 <ion-select [(ngModel)]="encuestaSeleccionada">
-                                    <ion-option value="0">Seleccione una encuesta</ion-option>
+                                    <ion-option value="0">{{ 'enviarencuesta.seleccione_una_encuesta' | translate }}</ion-option>
                                     <ion-option  *ngFor="let encuesta of listaEncuestas; let i = index; trackBy: id_encuesta" [value]="encuesta.id_encuesta">{{encuesta.descripcion}}</ion-option>
                                 </ion-select>
                             </ion-item>
 
                             <ion-item>
-                                <ion-label>Curso</ion-label>
+                                <ion-label>{{ 'enviarencuesta.curso' | translate }}</ion-label>
                                 <ion-select [(ngModel)]="cursoSeleccionado">
-                                    <ion-option value="0">Seleccione un curso</ion-option>
+                                    <ion-option value="0">{{ 'enviarencuesta.seleccione_un_curso' | translate }}</ion-option>
                                     <ion-option *ngFor="let curso of listaCursos; let i = index; trackBy: id_curso" [value]="curso.id_curso">{{curso.descripcion}}</ion-option>
                                 </ion-select>
                             </ion-item>
@@ -54,7 +54,7 @@
 
                 <ion-row  *ngIf="!cargando">
                     <ion-col class="signup-col animated pulse">
-                        <button ion-button type="button" (click)="EnviarEncuesta()" color="primary-color" full [disabled]="encuestaSeleccionada == 0 || cursoSeleccionado == 0">Asignar encuesta</button>
+                        <button ion-button type="button" (click)="EnviarEncuesta()" color="primary-color" full [disabled]="encuestaSeleccionada == 0 || cursoSeleccionado == 0">{{ 'enviarencuesta.asignar_encuesta' | translate }}</button>
                     </ion-col>
                 </ion-row>
 

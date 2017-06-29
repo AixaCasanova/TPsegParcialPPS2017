@@ -4,13 +4,13 @@
       <button ion-button menuToggle left>
           <ion-icon name="menu"></ion-icon>
       </button>
-    <ion-title>Alta de alumno en curso</ion-title>
+    <ion-title>{{ 'alumno-curso.titulo' | translate }}</ion-title>
   </ion-navbar>
   </ion-header>
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label>Curso:</ion-label>
+      <ion-label>{{ 'alumno-curso.curso' | translate }}:</ion-label>
       <ion-select [(ngModel)]="UnCurso" >
         <div *ngFor="let c of Cursos" >
           <ion-option value={{c.id_curso}} >{{c.descripcion}}</ion-option>
@@ -21,7 +21,7 @@
 
     <ion-list>
     <ion-item>
-      <ion-label>Alumno:</ion-label>
+      <ion-label>{{ 'alumno-curso.alumno' | translate }}:</ion-label>
       <ion-select [(ngModel)]="UnAlumno" >
         <div *ngFor="let a of UssAl" >
           <ion-option value={{a.id_usuario}} >{{a.nombre}}</ion-option>
@@ -31,9 +31,7 @@
   </ion-list>
 
 <div align="center">
-  <button ion-button color=light (click)="Alta()" color=default> Dar de alta </button>
+  <button ion-button color=light (click)="Alta()" color=default>{{ 'alumno-curso.dar_de_alta' | translate }}</button>
 </div>
 
  </ion-content>
- 
- 

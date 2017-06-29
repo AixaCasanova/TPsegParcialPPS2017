@@ -2,7 +2,7 @@
 <ion-menu [content]="content" side="left">
     <ion-header>
         <ion-toolbar color="primary-color">
-            <ion-title>Menu</ion-title>
+            <ion-title>{{ 'menu.titulo' | translate }}</ion-title>
         </ion-toolbar>
     </ion-header>
 
@@ -10,66 +10,66 @@
         <ion-list>
             <!-- alumno-->
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Alumno'" ion-item (click)="openPage(alumnoPage)" menuClose>
-                Mis encuestas
+                {{ 'menu.mis_encuestas' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Alumno'" ion-item (click)="openPage(miubicacion)" menuClose>
-                Mi Ubicacion
+                {{ 'menu.mi_ubicacion' | translate }}
             </button>
             <!-- fin alumno -->
 
             <!-- administrador-->
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaProfesor)" menuClose>
-                ABM Profesores
+                {{ 'menu.abm_profesores' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaAlumno)" menuClose>
-                ABM Alumnos
+                {{ 'menu.abm_alumnos' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaAdministrativo)" menuClose>
-                ABM Administrativos
+                {{ 'menu.abm_administrativos' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaAdministrador)" menuClose>
-                ABM Administradores
+                {{ 'menu.abm_administradores' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaComision)" menuClose>
-                ABM Comisiones
+                {{ 'menu.abm_comisiones' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrador'" ion-item (click)="openPage(grillaCurso)" menuClose>
-                ABM Cursos
+                {{ 'menu.abm_cursos' | translate }}
             </button>
 
             <!-- fin administrador -->
 
             <!-- administrativo -->
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(grafico1)" menuClose>
-                Cantidad de Respuestas por preguntas
+                {{ 'menu.cant_respuestas_por_preguntas' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(grafico2)" menuClose>
-                Cantidad de encuestas por curso
+                {{ 'menu.cant_encuestas_por_curso' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(grafico3)" menuClose>
-                Cantidad de alumnos por curso
+                {{ 'menu.cant_alumnos_por_curso' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(alumnocurso)" menuClose>
-                Alta de alumno en curso
+                {{ 'menu.alta_de_alumno_en_curso' | translate }}
             </button>
             <!-- fin administrativo -->
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Profesor'" ion-item (click)="Encuestas('profesorGenerar')" menuClose>
-                Crear encuesta
+                {{ 'menu.crear_encuesta' | translate }}
             </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Profesor'" ion-item (click)="Encuestas('profesorEnviar')" menuClose>
-                Asignar encuesta
+                {{ 'menu.asignar_encuesta' | translate }}
             </button>
 
         <button ion-item (click)="ayuda()">
-                  Ayuda...
+                 {{ 'menu.ayuda' | translate }}
             </button>
             <button ion-item (click)="acercaDe()" menuClose>
-                Acerca de...
+                 {{ 'menu.acerca_de' | translate }}
             </button>
             <button ion-item (click)="cerrarSesion()">
-                Cerrar sesion
+                {{ 'menu.cerrar_sesion' | translate }}
             </button>
-              
+
         </ion-list>
     </ion-content>
 
@@ -80,7 +80,7 @@
             </ion-avatar>
 
             <h2>{{ usuarioLogueado.usuario }}</h2>
-            <p>{{ usuarioLogueado.tipo_usuario }}</p>
+            <p>{{ 'menu.'+usuarioLogueado.tipo_usuario | translate }}</p>
         </ion-item>
     </ion-footer>
 </ion-menu>

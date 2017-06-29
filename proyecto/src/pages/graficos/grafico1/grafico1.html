@@ -4,7 +4,7 @@
         <button ion-button menuToggle left>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Cantidad de respuestas por pregunta</ion-title>
+        <ion-title>{{ 'grafico1.titulo' | translate }}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
 
     <ion-list *ngIf="!cargando">
         <ion-item>
-            <ion-label>Pregunta:</ion-label>
+            <ion-label>{{ 'grafico1.pregunta' | translate }}:</ion-label>
             <ion-select [(ngModel)]="Unapregunta" (ionChange)="onChange(Unapregunta)">
                 <div *ngFor="let p of pregs">
                     <ion-option value={{p}}>{{p}}</ion-option>
@@ -29,16 +29,16 @@
 
 
 
-                     
-<div *ngIf="conjAver2 != ''"> 
+
+<div *ngIf="conjAver2 != ''">
     <table>
     <tr>
-      <th>Respuesta</th>
-      <th>Cantidad</th>
+      <th>{{ 'grafico1.respuesta' | translate }}</th>
+      <th>{{ 'grafico1.cantidad' | translate }}</th>
     </tr>
     <tr *ngFor="let p of conjAver2">
       <td>{{p.drilldown}}</td>
-      <td>{{p.y}}</td> 
+      <td>{{p.y}}</td>
     </tr>
   </table>
 </div>

@@ -4,7 +4,7 @@
       <button ion-button menuToggle left>
           <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Cantidad de encuestas por curso</ion-title>
+      <ion-title>{{ 'grafico2.titulo' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
 
     <ion-list *ngIf="!cargando">
     <ion-item>
-      <ion-label>Curso:</ion-label>
+      <ion-label>{{ 'grafico2.curso' | translate }}:</ion-label>
       <ion-select [(ngModel)]="Uncurso" (ionChange)="onChange(Uncurso)">
         <div *ngFor="let p of cursos">
           <ion-option value={{p}}>{{p}}</ion-option>
@@ -27,15 +27,15 @@
 
   <div id="container"></div>
 
-<div *ngIf="conjAver2 != ''"> 
+<div *ngIf="conjAver2 != ''">
       <table>
     <tr>
-      <th>Curso</th>
-      <th>Cantidad</th>
+      <th>{{ 'grafico2.curso' | translate }}</th>
+      <th>{{ 'grafico2.cantidad' | translate }}</th>
     </tr>
     <tr *ngFor="let p of conjAver2">
       <td>{{p.drilldown}}</td>
-      <td>{{p.y}}</td> 
+      <td>{{p.y}}</td>
     </tr>
   </table>
 </div>

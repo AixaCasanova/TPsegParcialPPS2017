@@ -1,4 +1,6 @@
 {
+    "eliminar": "Eliminar",
+    "cancelar": "Cancelar",
     "acerca-de-page": {
         "titulo": "Acerca de nosotros",
         "descripcion": "<p>Somos el grupo de trabajo \"Los superdesarrolladores\" que desarrolló la aplicación de encuestas para la materia \"Práctica Prof. Supervisada\" de la carrera Técnico superior en programación de la UTN.</p><p>El desarrollo se implementó utilizando: Ionic 2 con TypeScript.</p><p>Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>",
@@ -31,11 +33,117 @@
         "completadas_desc": "Muestra las encuestas que ya se completaron.",
         "encuesta_no_asignada": "La encuesta no esta asignada al usuario o no existe."
     },
+    "alumno-curso": {
+        "titulo": "Alta de alumno en curso",
+        "curso": "Curso",
+        "alumno": "Alumno",
+        "dar_de_alta": "Dar de alta",
+        "alta_ok": "Se dio de alta correctamente",
+        "alta_error": "Error: Ya se encuentra dado de alta en el curso"
+    },
+    "alumno-encuestas": {
+        "titulo": "Encuestas",
+        "sin_encuestas": "No hay encuestas disponibles.",
+        "fecha": "Fecha"
+    },
     "administrador": {
         "titulo": "Administrador"
     },
     "administrativo": {
         "titulo": "Administrativo"
+    },
+    "encuesta": {
+        "titulo": "Encuesta",
+        "respuesta": "Respuesta",
+        "preguntas": "Preguntas",
+        "escriba_su_respuesta": "Escriba su respuesta",
+        "seleccione_una_opcion": "Seleccione una opción",
+        "siguiente_pregunta": "Siguiente pregunta",
+        "gracias_por_participar": "¡Gracias por participar de esta encuesta!",
+        "error_al_guardar": "Hubo un error al procesar su encuesta. Vuelva a intentarlo."
+    },
+    "encuesta-detalle": {
+        "descripcion": "Aquí se listan las preguntas de la encuesta. Puede crear y eliminar las preguntas.",
+        "tipo_texto": "Tipo: Texto",
+        "tipo_una_opcion": "Tipo: Una opción",
+        "multiples_opciones": "Tipo: Múltiples opciones",
+        "pregunta_agregada_ok": "Pregunta agregada con éxito!",
+        "pregunta_eliminada_ok": "Pregunta eliminada existosamente!"
+    },
+    "enviarencuesta": {
+        "titulo": "Asignador de Encuestas",
+        "descripcion": "En esta sección usted podrá asignar encuestas a un curso.",
+        "encuesta": "Encuesta",
+        "seleccione_una_encuesta": "Seleccione una encuesta",
+        "curso": "Curso",
+        "seleccione_un_curso": "Seleccione un curso",
+        "asignar_encuesta": "Asignar encuesta",
+        "encuesta_asignada_ok": "La encuesta se asignó al curso correctamente"
+    },
+    "generarencuesta": {
+        "titulo": "Generador de encuestas",
+        "descripcion": "Deslice a la derecha sobre la encuesta para agregar preguntas en la encuesta<br>Deslice a la izquierda sobre la encuesta para borrar la encuesta",
+        "pregunta_agregada_ok": "Pregunta agregada con éxito!",
+        "encuesta_agregada_ok": "Encuesta agregada con éxito!",
+        "encuesta_eliminada_ok": "Encuesta borrada con éxito!"
+    },
+    "modales": {
+        "agregar_pregunta": "Agregar pregunta",
+        "crear_encuesta": "Crear encuesta",
+        "ingrese_tipo_pregunta": "Ingrese tipo de pregunta",
+        "texto": "Texto",
+        "una_opcion": "Una opción",
+        "multiples_opciones": "Múltiples opciones",
+        "ingrese_la_pregunta": "Ingrese la pergunta",
+        "ingrese_opcion": "Ingrese opcion {{numero}}",
+        "crear_pregunta": "Crear pregunta",
+        "ingrese_desc_encuestas": "Ingrese descripcion de la Encuestas",
+        "ingrese_fecha_ini": "Ingrese fecha inicio",
+        "ingrese_fecha_fin": "Ingrese fecha fin",
+        "error_al_guardar": "Hubo un error al guardar la encuesta. Intente de nuevo.",
+        "error_al_guardar_pregunta": "Hubo un error al guardar la pregunta. Intente de nuevo."
+    },
+    "grafico1": {
+        "titulo": "Cantidad de respuestas por pregunta",
+        "pregunta": "Pregunta",
+        "respuesta": "Respuesta",
+        "cantidad": "Cantidad"
+    },
+    "grafico2": {
+        "titulo": "Cantidad de encuestas por curso",
+        "curso": "Curso",
+        "cantidad": "Cantidad",
+        "cantidad_de_encuestas": "Cantidad de encuestas"
+    },
+    "grafico3": {
+        "titulo": "Cantidad de alumnos por curso",
+        "curso": "Curso",
+        "cantidad": "Cantidad",
+        "cantidad_de_alumnos": "Cantidad de alumnos"
+    },
+    "menu": {
+        "titulo": "Menu",
+        "mis_encuestas": "Mis encuestas",
+        "mi_ubicacion": "Mi Ubicacion",
+        "abm_profesores": "ABM Profesores",
+        "abm_alumnos": "ABM Alumnos",
+        "abm_administrativos": "ABM Administrativos",
+        "abm_administadores": "ABM Administradores",
+        "abm_comisiones": "ABM Comisiones",
+        "abm_cursos": "ABM Cursos",
+        "cant_respuestas_por_preguntas": "Cantidad de Respuestas por preguntas",
+        "cant_encuestas_por_curso": "Cantidad de encuestas por curso",
+        "cant_alumnos_por_curso": "Cantidad de alumnos por curso",
+        "alta_de_alumno_en_curso": "Alta de alumno en curso",
+        "crear_encuesta": "Crear encuesta",
+        "asignar_encuesta": "Asignar encuesta",
+        "ayuda": "Ayuda",
+        "acerca_de": "Acerca de...",
+        "cerrar_sesion": "Cerrar sesión",
+        "Profesor": "Profesor",
+        "Alumno": "Alumno",
+        "Administrador": "Administrador",
+        "Administrativo": "Administrativo"
     },
     "profesor": {
         "titulo": "Profesor"

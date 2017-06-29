@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController, ModalController } from 'ioni
 import { Http } from '@angular/http';
 import { Pregunta } from '../encuesta/pregunta';
 import {Modales} from "../encuestas/modales/modales";
+import { TranslateService } from '@ngx-translate/core';
 
 /**
 * Generated class for the EncuestaDetalle page.
@@ -21,18 +22,23 @@ export class EncuestaDetalle {
     private toggle = [];
     private cargando = false;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public toastCtrl: ToastController, public modalCtrl: ModalController) {
-        console.log('EncuestaDetalle: ', navParams.data);
+    private LANG;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public toastCtrl: ToastController, public modalCtrl: ModalController, private translate: TranslateService) {
 
         this.encuesta = navParams.data;
 
         if (this.encuesta.id_encuesta > 0) {
             this.cargarPreguntas();
         }
+
+        translate.stream('encuesta-detalle').subscribe((res: string) => {
+            this.LANG = res;
+        });
+        
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad EncuestaDetalle');
     }
 
     cargarPreguntas() {
@@ -63,7 +69,7 @@ export class EncuestaDetalle {
         modal.onDidDismiss(data => {
 
             if (data) {
-                this.mostrarMensaje('Pregunta agregada con éxito!');
+                this.mostrarMensaje(this.LANG.pregunta_agregada_ok);
                 this.cargarPreguntas();
             }
 
@@ -80,7 +86,7 @@ export class EncuestaDetalle {
         this.http.delete('http://tppps2.hol.es/ws1/pregunta/'+id_pregunta)
         .map(r => r.json())
         .subscribe(data => {
-            this.mostrarMensaje('Pregunta eliminada existosamente!');
+            this.mostrarMensaje(this.LANG.pregunta_eliminada.ok);
             this.cargarPreguntas();
         });
 

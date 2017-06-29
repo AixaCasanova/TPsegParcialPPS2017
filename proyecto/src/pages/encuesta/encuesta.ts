@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { servicioAuth } from '../servicioAuth/servicioAuth';
 import { Pregunta } from './pregunta';
 import { Events } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the Encuesta page.
@@ -30,13 +31,20 @@ export class EncuestaPage {
     private cargando = false;
     private ocultarSiguientePregunte = false;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private auth: servicioAuth, private http: Http, public toastCtrl: ToastController, private events: Events) {
+    private LANG;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, private auth: servicioAuth, private http: Http, public toastCtrl: ToastController, private events: Events, private translate: TranslateService) {
         this.encuesta = navParams.data.encuesta;
         this.accion = navParams.data.accion;
         this.ocultarSiguientePregunte = false;
+
+        translate.stream('encuesta').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     ionViewDidLoad() {
+
         if (this.accion == EncuestaPage.ACCION_VER) {
             this.cargando = true;
             let usuario = this.auth.getUserInfo();
@@ -126,12 +134,12 @@ export class EncuestaPage {
             this.cargando = true;
             this.guardarEncuesta(usuario.id_usuario, this.preguntas).subscribe(response => {
                 this.cargando = false;
-                this.mostrarMensaje('¡Gracias por participar de esta encuesta!');
+                this.mostrarMensaje(this.LANG.gracias_por_participar);
                 this.events.publish('encuestas:refresh', true);
                 this.back();
             }, error => {
                 this.cargando = false;
-                this.mostrarMensaje('Hubo un error al procesar su encuesta. Vuelva a intentarlo.');
+                this.mostrarMensaje(this.LANG.error_al_guardar);
             });
         }
     }

@@ -12,8 +12,8 @@
               <ion-icon name="arrow-back"></ion-icon>
           </button>
       </ion-buttons>
-      <ion-title>Encuestas {{titulo}}</ion-title>
-      
+      <ion-title>{{ 'alumno-encuestas.titulo' | translate }} {{titulo}}</ion-title>
+
       <ion-buttons end>
           <button *ngIf="!cargando" ion-button icon-only (tap)="cargarEncuestas()">
               <ion-icon name="refresh"></ion-icon>
@@ -33,13 +33,13 @@
     <ion-list *ngIf="!cargando">
 
         <ion-item *ngIf="encuestas?.length == 0">
-            No hay encuestas disponibles.
+            {{ 'alumno-encuestas.sin_encuestas' | translate }}
         </ion-item>
 
         <button ion-item *ngFor="let encuesta of encuestas" (click)="verOResponderEncuesta(encuesta)">
             <h2>{{ encuesta.descripcion }}</h2>
             <p *ngIf="encuesta.fecha_inicio != '0000-00-00 00:00:00' || encuesta.fecha_fin != '0000-00-00 00:00:00'">
-                Fecha: {{ encuesta.fecha_inicio }} - {{ encuesta.fecha_fin }}
+                {{ 'alumno-encuestas.fecha' | translate }}: {{ encuesta.fecha_inicio }} - {{ encuesta.fecha_fin }}
             </p>
             <ion-icon name="ios-arrow-forward" item-right></ion-icon>
         </button>

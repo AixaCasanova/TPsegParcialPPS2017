@@ -5,6 +5,7 @@ import {Modales} from "../../encuestas/modales/modales";
 import {Http} from '@angular/http';
 import { servicioAuth } from '../../servicioAuth/servicioAuth';
 import { EncuestaDetalle } from "../../encuesta-detalle/encuesta-detalle";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-generarencuesta',
@@ -23,12 +24,18 @@ export class GenerarEncuesta {
 
     cargando = false;
 
+    private LANG;
+
 
     constructor(public navCtrl: NavController,public viewCtrl:ViewController,public modalCtrl: ModalController
-        ,public NavParams: NavParams,private http: Http,servAuth:servicioAuth, public toastCtrl: ToastController)
+        ,public NavParams: NavParams,private http: Http,servAuth:servicioAuth, public toastCtrl: ToastController, private translate: TranslateService)
         {
             this.usuarioLogueado = servAuth.getUserInfo();
             this.cargarEncuestas();
+
+            translate.stream('generarencuesta').subscribe((res: string) => {
+                this.LANG = res;
+            });
         }
 
         agregarPregunta(datos) {
@@ -41,7 +48,7 @@ export class GenerarEncuesta {
                 console.log('onDidDismiss: ', data);
                 if (data) {
                     this.cargarEncuestas();
-                    this.mostrarMensaje('Pregunta agregada con éxito!');
+                    this.mostrarMensaje(this.LANG.pregunta_agregada_ok);
                 }
             });
 
@@ -69,7 +76,7 @@ export class GenerarEncuesta {
                 console.log('onDidDismiss: ', data);
                 if (data) {
                     this.cargarEncuestas();
-                    this.mostrarMensaje('Encuesta agregada con éxito!');
+                    this.mostrarMensaje(this.LANG.encuesta_agregada_ok);
                 }
             });
 
@@ -87,7 +94,7 @@ export class GenerarEncuesta {
             .subscribe((quote) =>{
                 this.cargando = false;
                 this.cargarEncuestas();
-                this.mostrarMensaje('Encuesta borrada con éxito!');
+                this.mostrarMensaje(this.LANG.encuesta_eliminada_ok);
                 console.info(quote);
             }, e => {
                 this.cargando = false;

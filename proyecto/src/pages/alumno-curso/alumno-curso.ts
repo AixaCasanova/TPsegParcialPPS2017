@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { servicioAuth } from '../servicioAuth/servicioAuth';
 import {Http} from '@angular/http';
- 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'alumno-curso',
   templateUrl: 'alumno-curso.html',
@@ -17,15 +18,21 @@ export class AlumnoCurso {
   UnCurso;
   UnAlumno;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private auth: servicioAuth) {
+  private LANG;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private auth: servicioAuth, private translate: TranslateService) {
       this.usuarioLogueado = this.auth.getUserInfo();
       console.info(this.usuarioLogueado);
       this.traerAlumnos();
       this.traerCusos();
+
+      translate.stream('alumno-curso').subscribe((res: string) => {
+          this.LANG = res;
+      });
   }
 
-  
-  
+
+
   traerAlumnos()
   {
             console.info("entro");
@@ -64,22 +71,23 @@ export class AlumnoCurso {
 
   Alta()
   {
-    console.info(this.UnCurso);
-    console.info(this.UnAlumno);
-    
+      console.info(this.UnCurso);
+      console.info(this.UnAlumno);
+
       this.http.post("http://tppps2.hol.es/ws1/alumnoCurso/alta", {
-             id_usuario:this.UnAlumno,
-             id_curso: this.UnCurso
-          })
-          .map(res => res.json())
-          .subscribe((quote) =>{
-            console.info(quote);
-           alert("Se dio de alta correctamente");  
-          },
-           err => {alert("Error: Ya se encuentra dado de alta en el curso");
-          });
-          this.UnCurso=null;
-          this.UnAlumno=null;
+          id_usuario:this.UnAlumno,
+          id_curso: this.UnCurso
+      })
+      .map(res => res.json())
+      .subscribe((quote) =>{
+          console.info(quote);
+          alert(this.LANG.alta_ok);
+      },
+      err => {
+          alert(this.LANG.alta_error);
+      });
+      this.UnCurso=null;
+      this.UnAlumno=null;
   }
 
 }

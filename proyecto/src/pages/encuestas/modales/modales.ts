@@ -3,6 +3,7 @@ import 'rxjs/Rx';
 import { NavController,NavParams, ToastController } from 'ionic-angular';
 import { ModalController, ViewController } from 'ionic-angular';
 import {Http} from '@angular/http';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-Modales',
@@ -31,7 +32,9 @@ export class Modales {
 
     cargando = false;
 
-    constructor(public navCtrl: NavController,public viewCtrl:ViewController,public modalCtrl: ModalController, public NavParams: NavParams, private http: Http, public toastCtrl: ToastController) {
+    private LANG;
+
+    constructor(public navCtrl: NavController,public viewCtrl:ViewController,public modalCtrl: ModalController, public NavParams: NavParams, private http: Http, public toastCtrl: ToastController, private translate: TranslateService) {
         this.datos = NavParams.data;
         this.idEncuesta=this.datos.idEncuesta;
         console.info(this.datos);
@@ -41,6 +44,10 @@ export class Modales {
         } else if(this.datos.queHago == "AgregarEncuesta") {
             this.veoEncuesta =true;
         }
+
+        translate.stream('modales').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     dismiss() {
@@ -67,7 +74,7 @@ export class Modales {
             this.cargando = false;
             this.viewCtrl.dismiss(true);
         }, e => {
-            this.mostrarMensaje('Hubo un error al guardar la encuesta. Intente de nuevo.');
+            this.mostrarMensaje(this.LANG.error_al_guardar);
             this.cargando = false;
         });
 
@@ -102,7 +109,7 @@ export class Modales {
             console.info(quote);
             this.viewCtrl.dismiss(true);
         }, e => {
-            this.mostrarMensaje('Hubo un error al guardar la pregunta. Intente de nuevo.');
+            this.mostrarMensaje(this.LANG.error_al_guardar_pregunta);
             this.cargando = false;
         });
 

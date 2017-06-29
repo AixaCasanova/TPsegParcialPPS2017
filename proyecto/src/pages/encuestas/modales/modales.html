@@ -2,12 +2,12 @@
     <ion-navbar color="primary">
         <ion-buttons start left>
             <button ion-button icon-only (tap)="dismiss()">
-                Cancelar
+                {{ 'cancelar' | translate }}
             </button>
         </ion-buttons>
 
         <ion-title>
-            {{datos.queHago == "AgregarPregunta" ? 'Agregar pregunta' : 'Crear encuesta'}}
+            {{ (datos.queHago == "AgregarPregunta" ? 'modales.agregar_pregunta' : 'modales.crear_encuesta') | translate }}
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -23,57 +23,57 @@
         <div *ngIf="veoPreguntas">
 
             <ion-item>
-                <ion-label floating>Ingrese tipo de pregunta</ion-label>
+                <ion-label floating>{{ 'modales.ingrese_tipo_pregunta' | translate }}</ion-label>
                 <ion-select [(ngModel)]="tipoPregunta">
-                    <ion-option value="1" selected>Texto</ion-option>
-                    <ion-option value="2">Una opcion</ion-option>
-                    <ion-option value="3">Multiples opciones</ion-option>
+                    <ion-option value="1" selected></ion-option>
+                    <ion-option value="2"></ion-option>
+                    <ion-option value="3">{{ 'modales.multiples_opciones' | translate }}</ion-option>
                 </ion-select>
             </ion-item>
 
             <ion-item>
-                <ion-label floating>Ingrese la pregunta</ion-label>
+                <ion-label floating>{{ 'modales.ingrese_la_pregunta' | translate }}</ion-label>
                 <ion-input type="text"  name="pregunta" [(ngModel)]="pregunta" required></ion-input>
             </ion-item>
 
             <div *ngIf="tipoPregunta > 1">
                 <ion-item>
-                    <ion-input type="text"  name="opcion1" [(ngModel)]="opcion1" placeholder="ingrese opcion 1" ></ion-input>
+                    <ion-input type="text"  name="opcion1" [(ngModel)]="opcion1" placeholder="{{ 'modales.ingrese_opcion' | translate:{numero:1} }}" ></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-input type="text"  name="opcion2" [(ngModel)]="opcion2" placeholder="ingrese opcion 2" ></ion-input>
+                    <ion-input type="text"  name="opcion2" [(ngModel)]="opcion2" placeholder="{{ 'modales.ingrese_opcion' | translate:{numero:2} }}" ></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-input type="text"  name="opcion3" [(ngModel)]="opcion3" placeholder="ingrese opcion 3"></ion-input>
+                    <ion-input type="text"  name="opcion3" [(ngModel)]="opcion3" placeholder="{{ 'modales.ingrese_opcion' | translate:{numero:3} }}"></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-input type="text"  name="opcion4" [(ngModel)]="opcion4" placeholder="ingrese opcion 4"></ion-input>
+                    <ion-input type="text"  name="opcion4" [(ngModel)]="opcion4" placeholder="{{ 'modales.ingrese_opcion' | translate:{numero:4} }}"></ion-input>
                 </ion-item>
             </div>
 
-            <button ion-button type="button" (click)="altaPregunta()" color="primary-color" full [disabled]="tipoPregunta == '' || pregunta == ''">Crear pregunta</button>
+            <button ion-button type="button" (click)="altaPregunta()" color="primary-color" full [disabled]="tipoPregunta == '' || pregunta == ''">{{ 'modales.crear_pregunta' | translate }}</button>
 
         </div>
 
         <div *ngIf="veoEncuesta">
             <ion-item>
-                <ion-label floating>Ingrese descripcion de la Encuestas</ion-label>
+                <ion-label floating>{{ 'modales.ingrese_desc_encuestas' | translate }}</ion-label>
                 <ion-input type="text"  name="descripcion" [(ngModel)]="encuesta.descripcion" required></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-input type="date"  name="fechaInicio" [(ngModel)]="encuesta.fechaInicio" placeholder="ingrese fecha Inicio"></ion-input>
+                <ion-input type="date"  name="fechaInicio" [(ngModel)]="encuesta.fechaInicio" placeholder="{{ 'modales.ingrese_fecha_ini' | translate }}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-input type="date"  name="fechaFin" [(ngModel)]="encuesta.fechaFin" placeholder="ingrese fecha fin"></ion-input>
+                <ion-input type="date"  name="fechaFin" [(ngModel)]="encuesta.fechaFin" placeholder="{{ 'modales.ingrese_fecha_fin' | translate }}"></ion-input>
             </ion-item>
 
             <!--&nbsp;&nbsp;&nbsp;<a href="#" class="myButton" (click)="altaEncuesta()">Nueva Encuesta</a>-->
-            <button ion-button type="button" (click)="altaEncuesta()" color="primary-color" full [disabled]="encuesta.descripcion == ''">Crear Encuesta</button>
+            <button ion-button type="button" (click)="altaEncuesta()" color="primary-color" full [disabled]="encuesta.descripcion == ''">{{ 'modales.crear_encuesta' | translate }}</button>
 
         </div>
 

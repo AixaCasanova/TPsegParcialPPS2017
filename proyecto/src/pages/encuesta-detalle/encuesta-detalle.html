@@ -26,7 +26,7 @@
 
         <ion-row *ngIf="!cargando" class="animated pulse" align-items-start>
             <ion-col text-center>
-                <p>Aquí se listan las preguntas de la encuesta. Puede crear y eliminar las preguntas.</p>
+                <p>{{ 'encuesta-detalle.descripcion' | translate }}</p>
             </ion-col>
         </ion-row>
 
@@ -39,9 +39,9 @@
 
                         <ion-item [class.nowraptext]="toggle[i]">
                             <h2>{{ pregunta.descripcion }}</h2>
-                            <p *ngIf="pregunta.tipo == 'text'">Tipo: Texto</p>
-                            <p *ngIf="pregunta.tipo == 'radio'">Tipo: Una opción</p>
-                            <p *ngIf="pregunta.tipo == 'checkbox'">Tipo: Múltiples opciones</p>
+                            <p *ngIf="pregunta.tipo == 'text'">{{ 'encuesta-detalle.tipo_texto' | translate }}</p>
+                            <p *ngIf="pregunta.tipo == 'radio'">{{ 'encuesta-detalle.tipo_una_opcion' | translate }}</p>
+                            <p *ngIf="pregunta.tipo == 'checkbox'">{{ 'encuesta-detalle.tipo_multiples_opciones' | translate }}</p>
 
                             <button ion-button icon-only clear item-right (click)="toggle[i] = !toggle[i];">
                                 <ion-icon [name]="toggle[i] ? 'ios-arrow-dropup-outline' : 'ios-arrow-dropdown-outline'"></ion-icon>
@@ -64,7 +64,7 @@
                             <ion-col>
                                 <button ion-button icon-left clear small color="danger" (click)="eliminarPregunta(pregunta.id_pregunta)">
                                     <ion-icon name="trash"></ion-icon>
-                                    <div>Eliminar</div>
+                                    <div>{{ 'eliminar' | translate }}</div>
                                 </button>
                             </ion-col>
                         </ion-row>

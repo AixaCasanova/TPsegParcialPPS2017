@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController  } from 'ionic-angular';
 import {Http} from '@angular/http';
-import Highcharts from 'highcharts'
+import Highcharts from 'highcharts';
+import { TranslateService } from '@ngx-translate/core';
 /**
 * Generated class for the ModificacionModal page.
 *
@@ -16,8 +17,14 @@ export class Grafico2
 {
     cargando = false;
 
-    constructor(public navCtrl: NavController,public http:Http) {
+    private LANG;
+
+    constructor(public navCtrl: NavController, public http:Http, private translate: TranslateService) {
         this.traerdatos();
+
+        translate.stream('grafico2').subscribe((res: string) => {
+            this.LANG = res;
+        });
 
     }
 
@@ -85,16 +92,16 @@ export class Grafico2
                 polar: true,
                 type: 'bar'
             },
-        
+
             title: {
-                text: "Curso: "+event
+                text: this.LANG.curso+ ": " + event
             },
             xAxis: {
                 type: 'category'
             },
             yAxis: {
                 title: {
-                    text: 'cantidad de encuestas'
+                    text: this.LANG.cantidad_de_encuestas
                 }
 
             },
