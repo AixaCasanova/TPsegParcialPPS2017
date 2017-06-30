@@ -1,6 +1,11 @@
 {
     "eliminar": "Eliminar",
     "cancelar": "Cancelar",
+    "crear": "Crear",
+    "guardar": "Guardar",
+    "email": "Email",
+    "nombre": "Nombre",
+    "clave": "Clave",
     "acerca-de-page": {
         "titulo": "Acerca de nosotros",
         "descripcion": "<p>Somos el grupo de trabajo \"Los superdesarrolladores\" que desarrolló la aplicación de encuestas para la materia \"Práctica Prof. Supervisada\" de la carrera Técnico superior en programación de la UTN.</p><p>El desarrollo se implementó utilizando: Ionic 2 con TypeScript.</p><p>Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>",
@@ -145,7 +150,45 @@
         "Administrador": "Administrador",
         "Administrativo": "Administrativo"
     },
+    "miubicacion" : {
+        "titulo": "Geolocalizacion UTN",
+        "usted_se_encuentra_aqui": "Usted se encuentra aqui!",
+        "utn_fra": "UTN FRA"
+    },
     "profesor": {
         "titulo": "Profesor"
+    },
+    "servicioAuth": {
+        "ingrese_credenciales": "Por favor inserte las credenciales"
+    },
+    "app-components" : {
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos.",
+    },
+    "alta-modal": {
+        "imagen": "Imagen",
+        "tomar_foto": "Tomar foto",
+        "debe_completar_campos": "Debe completar todos los campos!",
+        "no_se_pudo_crear_el_usuario_db": "No se pudo crear el usuario en la base de datos.",
+        "no_se_pudo_crear_el_usuario": "No se pudo crear el usuario.",
+        "error_al_crear_usuario": "Error al crear el usuario"
+    },
+    "alta-modal-cursos": {
+        "titulo": "Alta de cursos",
+        "nombre_curso": "Nombre del curso",
+        "comision": "Comision",
+        "profesor": "Profesor"
+    },
+    "grilla-administrador": {
+        "titulo": "Administradores",
+        "desc": "Aquí se listan los usuarios de tipo \"administrador\". Puede crear, editar y eliminar.",
+        "usuario_modificado_ok": "Usuario modificado con éxito!",
+        "usuario_creado_ok": "Usuario creado con éxito!",
+        "eliminacion_de_usuario": "Eliminacion de usuario",
+        "confirmar_eliminar_usuario": "Seguro que desear eliminar el usuario",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
     }
 }

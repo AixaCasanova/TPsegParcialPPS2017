@@ -24,6 +24,8 @@ export class MyApp {
     private platformReady = false;
     private authReady = false;
 
+    private LANG;
+
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, private auth: servicioAuth,
     private nativeAudio: NativeAudio,public vibration:Vibration, public authData: AuthData, private events: Events, private translate: TranslateService) {
         this.splashScreen = splashScreen
@@ -45,6 +47,10 @@ export class MyApp {
         this.translate.setDefaultLang('es');
 
         this.translate.use(userLang);
+
+        this.translate.stream('app-components').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     ngOnInit() {
@@ -108,13 +114,13 @@ export class MyApp {
 
                     this.authData.removeCurrentUser().then( _ => {
 
-                        this.events.publish('auth:login:no_existe', "El usuario no existe o ingresó datos invalidos.");
+                        this.events.publish('auth:login:no_existe', this.LANG.usuario_no_existe);
 
                         this.rootPage = Login;
 
                     }, error => {
 
-                        this.events.publish('auth:login:no_existe', "El usuario no existe o ingresó datos invalidos.");
+                        this.events.publish('auth:login:no_existe', this.LANG.usuario_no_existe);
                         this.rootPage = Login;
 
                     });

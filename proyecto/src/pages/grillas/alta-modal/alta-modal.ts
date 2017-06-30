@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { MediaCapture } from '@ionic-native/media-capture';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from 'ionic-native';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
 * Generated class for the ModificacionModal page.
@@ -35,14 +36,20 @@ export class AltaModal
 
     cargando = false;
 
+    private LANG;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http,
         public viewCtrl: ViewController, public auth: AuthData, private alertCtrl: AlertController, private mediaCapture: MediaCapture,
-    private imagePicker: ImagePicker)
+    private imagePicker: ImagePicker, private translate: TranslateService)
     {
         console.log('navParams.data: ');
         console.log(navParams.data);
         this.t = navParams.data['tipo'];
         this.id_tipo = navParams.data['id_tipo'];
+
+        translate.stream('alta-modal').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     tomarFoto(){
@@ -64,7 +71,7 @@ export class AltaModal
         console.log('Alta: ' + id_tipo);
 
         if (nombre == null || nombre=="" ||usuario==null || usuario=="" || clave== null || clave=="" || id_tipo==null || id_tipo=="" ) {
-            alert ("Debe completar todos los campos!");
+            alert (this.LANG.debe_completar_campos);
         } else {
             this.cargando = true;
 
@@ -92,7 +99,7 @@ export class AltaModal
                         if (quote.error == false) {
                             this.viewCtrl.dismiss(true);
                         } else {
-                            this.showMsg('No se pudo crear el usuario en la base de datos.');
+                            this.showMsg(this.LANG.no_se_pudo_crear_el_usuario_db);
                         }
 
                     }, e => {
@@ -101,7 +108,7 @@ export class AltaModal
                     });
 
                 } else {
-                    this.showMsg('No se pudo crear el usuario.');
+                    this.showMsg(this.LANG.no_se_pudo_crear_el_usuario);
 
                     this.cargando = false;
                 }
@@ -119,7 +126,7 @@ export class AltaModal
 
     showMsg(text) {
         let alert = this.alertCtrl.create({
-            title: 'Error al crear el usuario',
+            title: this.LANG.error_al_crear_usuario,
             subTitle: text,
             buttons: ['OK']
         });

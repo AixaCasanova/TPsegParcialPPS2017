@@ -4,15 +4,15 @@
     <ion-navbar color="primary">
         <ion-buttons start left>
             <button ion-button icon-only (tap)="cancelar()">
-                Cancelar
+                {{ 'cancelar' | translate }}
             </button>
         </ion-buttons>
 
-        <ion-title text-center>Crear {{t}}</ion-title>
+        <ion-title text-center>{{ 'crear' | translate }} {{t}}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only color="primary-color-text" [disabled]="u == '' || n == '' || c == ''" (tap)="Alta(n, u, c, id_tipo)">
-                Guardar
+                {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -27,18 +27,18 @@
     <div *ngIf="!cargando">
 
         <ion-item>
-            <ion-label floating>Usuario (email)</ion-label>
+            <ion-label floating>{{ 'email' | translate }}</ion-label>
             <ion-input type="email" [(ngModel)]="u" clearInput required></ion-input>
         </ion-item>
 
 
         <ion-item>
-            <ion-label floating>Nombre</ion-label>
+            <ion-label floating>{{ 'nombre' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="n" clearInput required ></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating >Claves</ion-label>
+            <ion-label floating >{{ 'clave' | translate }}</ion-label>
             <ion-input type="password" [(ngModel)]="c" clearInput required> </ion-input>
         </ion-item>
 
@@ -46,8 +46,8 @@
             <ion-thumbnail item-start>
                 <img [src]="base64Image" *ngIf="base64Image">
             </ion-thumbnail>
-            <h2>Imagen</h2>
-            <button ion-button (tap)="tomarFoto()" clear item-end>Tomar foto</button>
+            <h2>{{ 'alta-modal.imagen' | translate }}</h2>
+            <button ion-button (tap)="tomarFoto()" clear item-end>{{ 'alta-modal.tomar_foto' | translate }}</button>
         </ion-item>
 
     </div>

@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
 import {User} from '../servicioAuth/user';
 import 'rxjs/Rx';
+import { TranslateService } from '@ngx-translate/core';
 
  @Component({
   selector: 'page-contact',
@@ -14,7 +15,14 @@ export class servicioAuth {
     currentUser: User;
     ListaUsuarios = "";
 
-    constructor(private http: Http) {
+    private LANG;
+
+    constructor(private http: Http, private translate: TranslateService) {
+
+        translate.stream('servicioAuth').subscribe((res: string) => {
+            this.LANG = res;
+        });
+
     }
 
     public getUsuarioByUsuario (usuario) {
@@ -28,7 +36,7 @@ export class servicioAuth {
 
         if (credenciales.usuario == null || credenciales.clave == null) {
 
-            return Observable.throw("Por favor inserte las credenciales");
+            return Observable.throw(this.LANG.ingrese_credenciales);
 
         } else {
 

@@ -4,15 +4,15 @@
     <ion-navbar color="primary">
         <ion-buttons start left>
             <button ion-button icon-only (tap)="cancelar()">
-                Cancelar
+                {{ 'cancelar' | translate }}
             </button>
         </ion-buttons>
 
-        <ion-title>Alta de cursos</ion-title>
+        <ion-title>{{ 'alta-modal-cursos.titulo' | translate }}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only color="primary-color-text" [disabled]="d == '' || desc_comi == '' || profe == ''" (tap)="Alta(d,desc_comi,profe)">
-                Guardar
+                {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -25,12 +25,12 @@
     </div>
 
     <ion-item *ngIf="!cargando">
-        <ion-label floating>Nombre del curso:</ion-label>
+        <ion-label floating>{{ 'alta-modal-cursos.nombre_curso' | translate }}:</ion-label>
         <ion-input type="text" [(ngModel)]="d"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="!cargando">
-        <ion-label>Comision:</ion-label>
+        <ion-label>{{ 'alta-modal-cursos.comision' | translate }}:</ion-label>
         <ion-select [(ngModel)]="desc_comi" >
             <div *ngFor="let c of comisiones" >
                 <ion-option value={{c.id_comision}} >{{c.descripcion}}</ion-option>
@@ -39,7 +39,7 @@
     </ion-item>
 
     <ion-item *ngIf="!cargando">
-        <ion-label>Profesor:</ion-label>
+        <ion-label>{{ 'alta-modal-cursos.profesor' | translate }}:</ion-label>
         <ion-select [(ngModel)]="profe" >
             <div *ngFor="let p of UssP" >
                 <ion-option value={{p.id_usuario}} >{{p.nombre}}</ion-option>
