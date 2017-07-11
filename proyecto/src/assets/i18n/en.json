@@ -1,9 +1,300 @@
 {
+    "eliminar": "Delete",
+    "cancelar": "Cancelr",
+    "crear": "Create",
+    "guardar": "Save",
+    "email": "Email",
+    "nombre": "Name",
+    "clave": "Password",
+    "resetear_clave": "Reset password",
     "acerca-de-page": {
         "titulo": "About us",
         "descripcion": "<p>We are the team of \"Los superdesarrolladores\" developer of \"Encuestas UTN\" to the \"Práctica Prof. Supervisada\".</p><p>The developement was implemented with: Ionic 2 + TypeScript.</p><p>The animations Las animaciones están hechas con la librería: Animate.css (http://daneden.me/animate).</p>",
         "Dispositivo": "Device",
         "Plataforma": "Platform",
         "Integrantes": "Team"
+    },
+    "login": {
+        "email": "Email",
+        "clave": "Password",
+        "usuarios_test": "Usuarios test",
+        "iniciar_sesion": "Iniciar sesión",
+        "iniciando_sesion": "Iniciando sesión...",
+        "fallo": "Fallo",
+        "ok": "Ok",
+        "cancelar": "Cancelar",
+        "inicio_sesion_github_cancelado": "El inicio de sesión de Github fue cancelado",
+        "inicio_sesion_github_no_autorizado": "El inicio de sesión con Github no fue autorizado.",
+        "inicio_sesion_error": "Error al iniciar sesión: ",
+        "msg_no_internet": "Es probable que no tengas Internet. Chequea tu conexión.",
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos."
+    },
+    "alumno": {
+        "titulo": "Student",
+        "escanear": "Scan",
+        "ver_mis_encuestas": "View my surveys:",
+        "pendientes": "Pending",
+        "pendientes_desc": "It shows the surveys that have not yet been done.",
+        "completadas": "Completed",
+        "completadas_desc": "Displays surveys that have been completed.",
+        "encuesta_no_asignada": "The survey is not assigned to the user or does not exist."
+    },
+    "alumno-curso": {
+        "titulo": "Asign Student to Course",
+        "curso": "Course",
+        "alumno": "Student",
+        "dar_de_alta": "Asign Student to Course",
+        "alta_ok": "Was successfully registered",
+        "alta_error": "Error: Already registered in the course",
+        "seleccione_curso": "Select a course",
+        "seleccione_alumno": "Select a student",
+        "dando_de_alta": "Assigning..."
+    },
+    "alumno-encuestas": {
+        "titulo": "Surveys",
+        "sin_encuestas": "No surveys available.",
+        "fecha": "Date"
+    },
+    "administrador": {
+        "titulo": "Administrator"
+    },
+    "administrativo": {
+        "titulo": "Administrative"
+    },
+    "encuesta": {
+        "titulo": "Survey",
+        "respuesta": "Answer",
+        "preguntas": "Questions",
+        "escriba_su_respuesta": "Write your answer",
+        "seleccione_una_opcion": "Select an option",
+        "siguiente_pregunta": "Next question",
+        "gracias_por_participar": "¡Thank you for participating in this survey!",
+        "error_al_guardar": "There was an error processing your survey. Try again."
+    },
+    "encuesta-detalle": {
+        "descripcion": "Here the survey questions are listed. You can create and delete the questions.",
+        "tipo_texto": "Type: Text",
+        "tipo_una_opcion": "Type: One option",
+        "multiples_opciones": "Type: Multiple choices",
+        "pregunta_agregada_ok": "Question added successfully!",
+        "pregunta_eliminada_ok": "Question removed successfully!"
+    },
+    "enviarencuesta": {
+        "titulo": "Survey Assignor",
+        "descripcion": "In this section you can assign surveys to a course.",
+        "encuesta": "Survey",
+        "seleccione_una_encuesta": "Select a survey",
+        "curso": "Course",
+        "seleccione_un_curso": "Select a course",
+        "asignar_encuesta": "Assign survey",
+        "encuesta_asignada_ok": "The survey was assigned to the course correctly!"
+    },
+    "generarencuesta": {
+        "titulo": "Survey generator",
+        "descripcion": "Slide right on a survey to add questions to the survey <br> Slide to the left on a survey to delete the survey",
+        "pregunta_agregada_ok": "Question added successfully!",
+        "encuesta_agregada_ok": "Survey added successfully!",
+        "encuesta_eliminada_ok": "Survey removed successfully!"
+    },
+    "modales": {
+        "agregar_pregunta": "Add question",
+        "crear_encuesta": "Create survey",
+        "ingrese_tipo_pregunta": "Enter question type",
+        "texto": "Text",
+        "una_opcion": "One option",
+        "multiples_opciones": "Multiple choices",
+        "ingrese_la_pregunta": "Enter question",
+        "ingrese_opcion": "Enter option {{numero}}",
+        "crear_pregunta": "Create question",
+        "ingrese_desc_encuestas": "Enter description of the Surveys",
+        "ingrese_fecha_ini": "Enter date start",
+        "ingrese_fecha_fin": "Enter date end",
+        "error_al_guardar": "There was an error saving the survey. Try again.",
+        "error_al_guardar_pregunta": "There was an error saving the question. Try again."
+    },
+    "grafico1": {
+        "titulo": "Cantidad de respuestas por pregunta",
+        "pregunta": "Pregunta",
+        "respuesta": "Respuesta",
+        "cantidad": "Cantidad"
+    },
+    "grafico2": {
+        "titulo": "Cantidad de encuestas por curso",
+        "curso": "Curso",
+        "cantidad": "Cantidad",
+        "cantidad_de_encuestas": "Cantidad de encuestas"
+    },
+    "grafico3": {
+        "titulo": "Cantidad de alumnos por curso",
+        "curso": "Curso",
+        "cantidad": "Cantidad",
+        "cantidad_de_alumnos": "Cantidad de alumnos"
+    },
+    "menu": {
+        "titulo": "Menu",
+        "mis_encuestas": "Mis encuestas",
+        "mi_ubicacion": "Mi Ubicacion",
+        "abm_profesores": "ABM Teachers",
+        "abm_alumnos": "ABM Alumnos",
+        "abm_administrativos": "ABM Administrativos",
+        "abm_administradores": "ABM Administradores",
+        "abm_comisiones": "ABM Comisiones",
+        "abm_cursos": "ABM Cursos",
+        "cant_respuestas_por_preguntas": "Cantidad de Respuestas por preguntas",
+        "cant_encuestas_por_curso": "Cantidad de encuestas por curso",
+        "cant_alumnos_por_curso": "Cantidad de alumnos por curso",
+        "alta_de_alumno_en_curso": "Asignar Alumnos a Cursos",
+        "crear_encuesta": "Crear encuesta",
+        "asignar_encuesta": "Asignar encuesta",
+        "ayuda": "Ayuda",
+        "acerca_de": "Acerca de...",
+        "cerrar_sesion": "Cerrar sesión",
+        "Profesor": "Teacher",
+        "Alumno": "Alumno",
+        "Administrador": "Administrador",
+        "Administrativo": "Administrativo"
+    },
+    "miubicacion" : {
+        "titulo": "Geolocalizacion UTN",
+        "usted_se_encuentra_aqui": "Usted se encuentra aqui!",
+        "utn_fra": "UTN FRA"
+    },
+    "profesor": {
+        "titulo": "Teacher"
+    },
+    "servicioAuth": {
+        "ingrese_credenciales": "Por favor inserte las credenciales"
+    },
+    "app-components" : {
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos."
+    },
+    "alta-modal": {
+        "imagen": "Imagen",
+        "tomar_foto": "Tomar foto",
+        "debe_completar_campos": "Debe completar todos los campos!",
+        "no_se_pudo_crear_el_usuario_db": "No se pudo crear el usuario en la base de datos.",
+        "no_se_pudo_crear_el_usuario": "No se pudo crear el usuario.",
+        "error_al_crear_usuario": "Error al crear el usuario"
+    },
+    "alta-modal-cursos": {
+        "titulo": "Alta de cursos",
+        "nombre_curso": "Nombre del curso",
+        "comision": "Comision",
+        "profesor": "Teacher"
+    },
+    "grilla-administrador": {
+        "titulo": "Administradores",
+        "desc": "Aquí se listan los usuarios de tipo \"administrador\". Puede crear, editar y eliminar.",
+        "usuario_modificado_ok": "Administrador modificado con éxito!",
+        "usuario_creado_ok": "Administrador creado con éxito!",
+        "usuario_eliminado_ok": "Administrador modificado con éxito!",
+        "eliminacion_de_usuario": "Eliminacion de Administrador",
+        "confirmar_eliminar_usuario": "Seguro que desear eliminar el Administrador",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "grilla-administrativo": {
+        "titulo": "Administrativos",
+        "desc": "Aquí se listan los usuarios de tipo \"administrativo\". Puede crear, editar y eliminar.",
+        "usuario_modificado_ok": "Administrativo modificado con éxito!",
+        "usuario_creado_ok": "Administrativo creado con éxito!",
+        "usuario_eliminado_ok": "Administrativo modificado con éxito!",
+        "eliminacion_de_usuario": "Eliminacion de Administrativo",
+        "confirmar_eliminar_usuario": "Seguro que desear eliminar el Administrativo",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "grilla-alumno": {
+        "titulo": "Alumnos",
+        "desc": "Aquí se listan los usuarios de tipo \"alumno\". Puede crear, editar y eliminar.",
+        "usuario_modificado_ok": "Alumno modificado con éxito!",
+        "usuario_creado_ok": "Alumno creado con éxito!",
+        "usuario_eliminado_ok": "Alumno modificado con éxito!",
+        "eliminacion_de_usuario": "Eliminacion de usuario",
+        "confirmar_eliminar_usuario": "Seguro que desear eliminar el Alumno",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "grilla-comision": {
+        "titulo": "Comisiones",
+        "desc": "Aquí se listan las comisiones. Puede crear, editar y eliminar.",
+        "modificar_descripcion": "Modificar descripcion",
+        "placeholder_descripcion": "descripcion",
+        "modificar_ok": "Comisión modificada con éxito!",
+        "crear_ok": "Comisión creada con éxito!",
+        "eliminar_ok": "Comisión eliminada con éxito!",
+        "nueva_comision": "Nueva comision",
+        "eliminacion_de_comision": "Eliminacion de comisión",
+        "confirmar_eliminar_comision": "Confirma eliminar comisión: ",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "grilla-curso": {
+        "titulo": "Cursos",
+        "desc": "Aquí se listan los cursos. Puede crear, editar y eliminar.",
+        "comision": "Comision",
+        "profesor": "Teacher",
+        "guardar_en_txt": "Guardar en archivo de texto",
+        "hubo_un_error_intente_recargar": "Hubo un error. Intente recargar la pagina.",
+        "guardo_ok": "Se guardo correctamente!",
+        "guardo_error": "Error al guardar!",
+        "modificar_ok": "Curso modificado con éxito!",
+        "crear_ok": "Curso creado con éxito!",
+        "eliminacion_de_curso": "Eliminacion de curso",
+        "confirmar_eliminar_curso": "Confirma eliminar curso: ",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "grilla-profesor": {
+        "titulo": "Teachers",
+        "desc": "Aquí se listan los usuarios de tipo \"profesor\". Puede crear, editar y eliminar.",
+        "usuario_modificado_ok": "Teacher modificado con éxito!",
+        "usuario_creado_ok": "Teacher creado con éxito!",
+        "usuario_eliminado_ok": "Teacher modificado con éxito!",
+        "eliminacion_de_usuario": "Eliminacion de usuario",
+        "confirmar_eliminar_usuario": "Seguro que desear eliminar el Teacher",
+        "aceptar": "Aceptar",
+        "cancelar": "Cancelar",
+        "opciones": "Opciones",
+        "editar": "Editar",
+        "eliminar": "Eliminar"
+    },
+    "modificacion-modal": {
+        "tipo": "Tipo",
+        "imagen": "Imagen",
+        "tomar_foto": "Tomar foto",
+        "debe_completar_campos": "Debe completar todos los campos!",
+        "no_se_pudo_crear_el_usuario_db": "No se pudo crear el usuario en la base de datos.",
+        "no_se_pudo_crear_el_usuario": "No se pudo crear el usuario.",
+        "error_al_crear_usuario": "Error al crear el usuario",
+        "administrador": "Administrador",
+        "administrativo": "Administrativo",
+        "alumno": "Alumno",
+        "profesor": "Teacher",
+        "resetear_clave_ok_title": "Password reset successfully!",
+        "resetear_clave_ok_desc": "Se ha enviado un mail al usuario para que resetee la clave.",
+        "resetear_clave_error_title": "Error al resetear la clave",
+        "mail_invalido": "Email inválido."
+    },
+    "modificacion-modal-cursos": {
+        "titulo": "Modificacion de cursos",
+        "nombre_del_curso": "Nombre del curso",
+        "comision": "Comision",
+        "profesor": "Teacher"
     }
 }
