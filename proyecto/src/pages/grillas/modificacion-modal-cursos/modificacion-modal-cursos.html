@@ -4,15 +4,15 @@
     <ion-navbar color="primary">
         <ion-buttons start left>
             <button ion-button icon-only (tap)="Cancelar()">
-                Cancelar
+                {{ 'cancelar' | translate }}
             </button>
         </ion-buttons>
 
-        <ion-title>Modificacion de cursos</ion-title>
+        <ion-title>{{ 'modificacion-modal-cursos.titulo' | translate }}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only color="primary-color-text" [disabled]="d == '' || comisi == '' || profe == ''" (tap)="Modificar(d,comisi,profe)">
-                Guardar
+                {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -25,19 +25,19 @@
     </div>
 
     <ion-item *ngIf="!cargando">
-        <ion-label floating>Nombre del curso:</ion-label>
+        <ion-label floating>{{ 'modificacion-modal-cursos.nombre_del_curso' | translate }}:</ion-label>
         <ion-input type="text" [(ngModel)]="d"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="!cargando">
-        <ion-label>Comision:</ion-label>
+        <ion-label>{{ 'modificacion-modal-cursos.comision' | translate }}:</ion-label>
         <ion-select [(ngModel)]="comisi">
             <ion-option *ngFor="let c of comisiones" ng-value="comisi">{{c.descripcion}}</ion-option>
         </ion-select>
     </ion-item>
 
     <ion-item *ngIf="!cargando">
-        <ion-label>Profesor:</ion-label>
+        <ion-label>{{ 'modificacion-modal-cursos.profesor' | translate }}:</ion-label>
         <ion-select [(ngModel)]="profe" >
             <ion-option *ngFor="let p of UssP" ng-value="profe">{{p.nombre}}</ion-option>
         </ion-select>

@@ -112,6 +112,7 @@ export class GrillaAdministrador
                         .subscribe((quote) => {
                             this.cargando = false;
                             this.CargaGrilla();
+                            this.mostrarMensaje(this.LANG.usuario_eliminado_ok);
                         });
 
                     }

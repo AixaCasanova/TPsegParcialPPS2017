@@ -4,15 +4,15 @@
     <ion-navbar color="primary">
         <ion-buttons start left>
             <button ion-button icon-only (tap)="Cancelar()">
-                Cancelar
+                {{ 'cancelar' | translate }}
             </button>
         </ion-buttons>
 
-        <ion-title text-center>Editar</ion-title>
+        <ion-title text-center>{{ 'editar' | translate }}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only color="primary-color-text" [disabled]="n == ''" (tap)="Modificar(id_usuario, n, u, c, t)">
-                Guardar
+                {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -26,26 +26,26 @@
 
     <div *ngIf="!cargando">
         <ion-item>
-            <ion-label floating>Usuario</ion-label>
+            <ion-label floating>{{ 'email' | translate }}</ion-label>
             <ion-input type="text" disabled="true" [value]="u"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Nombre</ion-label>
+            <ion-label floating>{{ 'nombre' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="n"></ion-input>
         </ion-item>
         <ion-item>
-            <a (tap)="resetearClave(u)">Resetear password</a>
+            <a (tap)="resetearClave(u)">{{ 'resetear_clave' | translate }}</a>
         </ion-item>
 
         <ion-list>
             <ion-item>
-                <ion-label>Tipo</ion-label>
+                <ion-label>{{ 'modificacion-modal.tipo' | translate }}</ion-label>
                 <ion-select [(ngModel)]="t">
-                    <ion-option value="1">Administrador</ion-option>
-                    <ion-option value="3">Alumno</ion-option>
-                    <ion-option value="4">Profesor</ion-option>
-                    <ion-option value="2">Administrativo</ion-option>
+                    <ion-option value="1">{{ 'modificacion-modal.administrador' | translate }}</ion-option>
+                    <ion-option value="2">{{ 'modificacion-modal.administrativo' | translate }}</ion-option>
+                    <ion-option value="3">{{ 'modificacion-modal.alumno' | translate }}</ion-option>
+                    <ion-option value="4">{{ 'modificacion-modal.profesor' | translate }}</ion-option>
                 </ion-select>
             </ion-item>
         </ion-list>
@@ -54,8 +54,8 @@
             <ion-thumbnail  item-start>
                 <img [src]="base64Image" *ngIf="base64Image">
             </ion-thumbnail>
-            <h2>Imagen</h2>
-            <button ion-button (tap)="tomarFoto()" clear item-end>Tomar foto</button>
+            <h2>{{ 'modificacion-modal.imagen' | translate }}</h2>
+            <button ion-button (tap)="tomarFoto()" clear item-end>{{ 'modificacion-modal.tomar_foto' | translate }}</button>
         </ion-item>
     </div>
 

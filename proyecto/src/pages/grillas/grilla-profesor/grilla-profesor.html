@@ -5,7 +5,7 @@
         <button ion-button menuToggle left>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Profesores</ion-title>
+        <ion-title>{{ 'grilla-profesor.titulo' | translate }}</ion-title>
 
         <ion-buttons end>
             <button *ngIf="!cargando" ion-button icon-only (tap)="CargaGrilla()">
@@ -29,7 +29,7 @@
 
         <ion-row *ngIf="!cargando" class="animated pulse" align-items-start>
             <ion-col text-center>
-                <p>Aquí se listan los usuarios de tipo "profesor". Puede crear, editar y eliminar.</p>
+                <p>{{ 'grilla-profesor.desc' | translate }}</p>
             </ion-col>
         </ion-row>
 

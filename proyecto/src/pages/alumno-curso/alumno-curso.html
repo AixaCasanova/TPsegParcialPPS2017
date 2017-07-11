@@ -1,37 +1,41 @@
 
-  <ion-header>
-  <ion-navbar color="primary">
-      <button ion-button menuToggle left>
-          <ion-icon name="menu"></ion-icon>
-      </button>
-    <ion-title>{{ 'alumno-curso.titulo' | translate }}</ion-title>
-  </ion-navbar>
-  </ion-header>
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>{{ 'alumno-curso.curso' | translate }}:</ion-label>
-      <ion-select [(ngModel)]="UnCurso" >
-        <div *ngFor="let c of Cursos" >
-          <ion-option value={{c.id_curso}} >{{c.descripcion}}</ion-option>
-        </div>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle left>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ 'alumno-curso.titulo' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
 
-    <ion-list>
-    <ion-item>
-      <ion-label>{{ 'alumno-curso.alumno' | translate }}:</ion-label>
-      <ion-select [(ngModel)]="UnAlumno" >
-        <div *ngFor="let a of UssAl" >
-          <ion-option value={{a.id_usuario}} >{{a.nombre}}</ion-option>
-        </div>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+<ion-content padding>
 
-<div align="center">
-  <button ion-button color=light (click)="Alta()" color=default>{{ 'alumno-curso.dar_de_alta' | translate }}</button>
-</div>
+    <div *ngIf="cargando" text-center>
+        <ion-spinner text-center></ion-spinner>
+    </div>
 
- </ion-content>
+    <ion-list *ngIf="!cargando">
+        <ion-item>
+            <ion-label>{{ 'alumno-curso.curso' | translate }}:</ion-label>
+            <ion-select [(ngModel)]="UnCurso" >
+                <ion-option value="0">{{ 'alumno-curso.seleccione_curso' | translate }}</ion-option>
+                <ion-option *ngFor="let c of Cursos" value={{c.id_curso}}>{{c.descripcion}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="!cargando">
+        <ion-item>
+            <ion-label>{{ 'alumno-curso.alumno' | translate }}:</ion-label>
+            <ion-select [(ngModel)]="UnAlumno" >
+                <ion-option value="0">{{ 'alumno-curso.seleccione_alumno' | translate }}</ion-option>
+                <ion-option *ngFor="let a of UssAl" value={{a.id_usuario}} >{{a.nombre}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <div align="center" *ngIf="!cargando">
+        <button ion-button color=light (click)="Alta()" color="default" [disabled]="UnCurso == 0 || UnAlumno == 0">{{ 'alumno-curso.dar_de_alta' | translate }}</button>
+    </div>
+
+</ion-content>

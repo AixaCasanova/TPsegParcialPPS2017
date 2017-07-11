@@ -3,6 +3,7 @@ import { NavController, NavParams, NavOptions, ViewController, AlertController }
 import { Http, URLSearchParams } from '@angular/http';
 import { AuthData } from '../../../providers/auth-data';
 import { Camera } from 'ionic-native';
+import { TranslateService } from '@ngx-translate/core';
 /**
 * Generated class for the ModificacionModal page.
 *
@@ -28,7 +29,9 @@ export class ModificacionModal
     base64Image;
     cargando = false;
 
-    constructor (public navCtrl: NavController, public navParams: NavParams, htt:Http, public viewCtrl: ViewController, public auth: AuthData, private alertCtrl: AlertController)
+    private LANG;
+
+    constructor (public navCtrl: NavController, public navParams: NavParams, htt:Http, public viewCtrl: ViewController, public auth: AuthData, private alertCtrl: AlertController, private translate: TranslateService)
     {
         console.log(navParams['data']);
         this.c = navParams.data['clave'];
@@ -38,6 +41,10 @@ export class ModificacionModal
         this.id_usuario = navParams.data['id_usuario'];
         this.base64Image = navParams.data['imagen'];
         this.http = htt;
+
+        translate.stream('modificacion-modal').subscribe((res: string) => {
+            this.LANG = res;
+        });
     }
 
     tomarFoto(){
@@ -88,7 +95,7 @@ export class ModificacionModal
 
         this.auth.resetPassword(email).then( r => {
 
-            this.showMsg('Clave reseteada con exito', 'Se ha enviado un mail al usuario para que resetee la clave.');
+            this.showMsg(this.LANG.resetear_clave_ok_title, this.LANG.resetear_clave_ok_desc);
 
         },
         (error: any) => {
@@ -101,13 +108,13 @@ export class ModificacionModal
             switch (error.code) {
                 case 'INVALID_EMAIL':
                 case 'INVALID_USER':
-                    errorMessage = 'Invalid email';
+                    errorMessage = this.LANG.mail_invalido;
                 break;
                 default:
                     errorMessage = 'Error: [' + error.code + ']';
             }
 
-            this.showMsg('Error al resetear la clave', errorMessage);
+            this.showMsg(this.LANG.resetear_clave_error_title, errorMessage);
 
         });
 

@@ -24,6 +24,7 @@ export class ModificacionModalCursos
   profe_id;
   profe;
   cargando = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, htt:Http, public viewCtrl: ViewController)
   {
     this.d= navParams.data['descripcion'];

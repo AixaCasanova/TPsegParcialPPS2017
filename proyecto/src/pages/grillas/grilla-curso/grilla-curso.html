@@ -5,7 +5,7 @@
       <button ion-button menuToggle left>
           <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Cursos</ion-title>
+      <ion-title>{{ 'grilla-curso.titulo' | translate }}</ion-title>
 
       <ion-buttons end>
           <button *ngIf="!cargando" ion-button icon-only (tap)="cargarProfesoresYGrilla()">
@@ -29,7 +29,7 @@
 
         <ion-row *ngIf="!cargando" class="animated pulse" align-items-start>
             <ion-col text-center>
-                <p>Aquí se listan los cursos. Puede crear, editar y eliminar.</p>
+                <p>{{ 'grilla-curso.desc' | translate }}</p>
             </ion-col>
         </ion-row>
 
@@ -41,8 +41,8 @@
                     <ion-item *ngFor="let c of Cursos" (press)="abrirActionSheet(usr)" >
 
                         <h2>{{c.descripcion}}</h2>
-                        <p>Comision: {{c.comision_descripcion}}</p>
-                        <p>Profesor: {{c.profesor.nombre}}</p>
+                        <p>{{ 'grilla-curso.comision' | translate }}: {{c.comision_descripcion}}</p>
+                        <p>{{ 'grilla-curso.profesor' | translate }}: {{c.profesor.nombre}}</p>
 
                         <button ion-button clear item-right (click)="abrirActionSheet(c)">
                             <ion-icon name="more"></ion-icon>
@@ -54,7 +54,7 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-<button *ngIf="!cargando"  ion-button color="primary" (click)="GuardarFile()">Guardar en archivo de texto</button>
+<button *ngIf="!cargando"  ion-button color="primary" (click)="GuardarFile()">{{ 'grilla-curso.guardar_en_txt' | translate }}</button>
 
 
     <ion-fab *ngIf="!cargando" bottom right>

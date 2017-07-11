@@ -9,6 +9,7 @@ import { AltaModal } from '../alta-modal/alta-modal';
 import { AltaModalCursos } from '../alta-modal-cursos/alta-modal-cursos';
 import { ActionSheetController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-grilla-curso',
@@ -25,10 +26,17 @@ export class GrillaCurso {
     UssP=[];
     archivo;
     aGuardar: Array<any> =[];
+
+    private LANG;
+
   constructor(public file: File, private alertCtrl: AlertController, public navCtrl: NavController, public auth: servicioAuth ,public navParams: NavParams, public viewCtrl: ViewController,
-      private http: Http, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+      private http: Http, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, private translate: TranslateService) {
          this.archivo=file;
         this.cargarProfesoresYGrilla();
+
+        translate.stream('grilla-curso').subscribe((res: string) => {
+            this.LANG = res;
+        });
   }
 
   cargarProfesoresYGrilla() {
@@ -39,7 +47,7 @@ export class GrillaCurso {
 
           this.CargaGrilla();
       }, e => {
-          this.mostrarMensaje('Hubo un error. Intente recargar la pagina.');
+          this.mostrarMensaje(this.LANG.hubo_un_error_intente_recargar);
           this.cargando = false;
       });
 
@@ -74,7 +82,7 @@ export class GrillaCurso {
           });
 
       }
-    
+
       GuardarFile()
         {
             for(let c of this.Cursos)
@@ -85,13 +93,16 @@ export class GrillaCurso {
             console.info(this.Cursos);
              console.info(this.archivo.externalDataDirectory);
               this.archivo.writeExistingFile(this.archivo.externalDataDirectory,"cursos.txt", this.aGuardar)
-                .then(_ => alert("Se guardo correctamente!"))
+                .then( _ => {
+                    this.mostrarMensaje(this.LANG.guardo_ok);
+                })
                 .catch(
-                err => alert("Error al guardar!")           
-                );
-            
+                err => {
+                    this.mostrarMensaje(this.LANG.guardo_error)
+                });
 
-         
+
+
         }
 
 
@@ -110,7 +121,7 @@ export class GrillaCurso {
         modal.onDidDismiss(data => {
             if (data) {
                 this.CargaGrilla();
-                this.mostrarMensaje('Curso modificado con éxito!');
+                this.mostrarMensaje(this.LANG.modificar_ok);
             }
         });
         modal.present();
@@ -124,7 +135,7 @@ export class GrillaCurso {
         modal.onDidDismiss(data => {
             if (data) {
                 this.CargaGrilla();
-                this.mostrarMensaje('Curso creado con éxito!');
+                this.mostrarMensaje(this.LANG.crear_ok);
             }
         });
         modal.present();
@@ -135,18 +146,18 @@ export class GrillaCurso {
     {
       console.info(desc_curso);
               let alert = this.alertCtrl.create({
-              title: 'Eliminacion de Curso',
-              message: 'Confirma eliminar Curso: '+ desc_curso,
+              title: this.LANG.eliminacion_de_curso,
+              message: this.LANG.confirmar_eliminar_curso + desc_curso,
               buttons: [
                 {
-                  text: 'Cancelar',
+                  text: this.LANG.cancelar,
                   role: 'cancel',
                   handler: () => {
                     console.log('Cancelar clicked');
                   }
                 },
                 {
-                  text: 'Aceptar',
+                  text: this.LANG.aceptar,
                   handler: () => {
                     console.log('Aceptar clicked');
                     this.cargando = true;
@@ -157,7 +168,8 @@ export class GrillaCurso {
                     .map(res => res.json())
                     .subscribe((quote) =>{
                         this.cargando = false;
-                           this.CargaGrilla();
+                        this.mostrarMensaje(this.LANG.eliminar_ok);
+                        this.CargaGrilla();
                     }, e => {
                         this.cargando = false;
                     });
@@ -175,20 +187,20 @@ export class GrillaCurso {
             title: 'Opciones',
             buttons: [
                 {
-                    text: 'Editar',
+                    text:  this.LANG.editar,
                     handler: () => {
                         this.Modificar(c.id_curso, c.descripcion, c.comision_descripcion, c.id_usuario);
                     }
                 },
                 {
-                    text: 'Eliminar',
+                    text: this.LANG.eliminar,
                     role: 'destructive',
                     handler: () => {
                         this.Eliminar(c.id_curso, c.descripcion);
                     }
                 },
                 {
-                    text: 'Cancelar',
+                    text: this.LANG.cancelar,
                     role: 'cancel'
                 }
             ]
