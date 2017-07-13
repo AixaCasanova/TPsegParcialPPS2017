@@ -8,7 +8,7 @@
             </button>
         </ion-buttons>
 
-        <ion-title text-center>{{ 'crear' | translate }} {{t}}</ion-title>
+        <ion-title text-center>{{ 'crear' | translate }} {{ 'alta-modal.tipo_' + t | translate }}</ion-title>
 
         <ion-buttons end>
             <button ion-button icon-only color="primary-color-text" [disabled]="u == '' || n == '' || c == ''" (tap)="Alta(n, u, c, id_tipo)">
