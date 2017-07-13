@@ -31,11 +31,11 @@
                     <ion-row>
                         <ion-col class="signup-col">
                             <button ion-button class="submit-btn" color="primary-color" full type="submit" [disabled]="!loginForm.form.valid">
-                                {{"login.iniciar_sesion" | translate}}
+                                {{ "login.iniciar_sesion" | translate}}
                             </button>
 
                             <button ion-button margin-top color="dark" full type="button" (tap)="loginWithGithub()">
-                                {{"login.iniciar_sesion" | translate}}&nbsp;
+                                {{ "login.iniciar_sesion" | translate}}&nbsp;
                                 <ion-icon name="logo-github"></ion-icon>
                             </button>
                         </ion-col>
