@@ -17,13 +17,13 @@ Aplicaciones para demostrar el funcionamiento del plugin de traducción de Ionic
 $ ionic start traducciones blank --v2
 ```
 
-## Instalar plugin ngx-translate:
+## Instalar plugin ngx-translate
 
 ```bash
 $ npm install @ngx-translate/core @ngx-translate/http-loader --save
 ```
 
-## Pasos para agregar traducciones.
+## Pasos para agregar traducciones
 
 1. Crear carpeta "assets/i18n".
 2. Crear archivos de traduccion ej: es.json, en.json y ponerlos dentro de la carpeta creada en el paso 1.
@@ -33,12 +33,14 @@ $ npm install @ngx-translate/core @ngx-translate/http-loader --save
         "titulo": "Mi título"
 }
 ```
-4. Agregar la plataforma android para testear con el siguiente comando:
+
+## Instalar aplicación en dispositivo Android
+
+1. Agregar la plataforma android para testear con el siguiente comando:
 ```bash
 $ ionic platform add android
 ```
-
-5. Testear la aplicación en el dispositivo con el siguiente comando:
+2. Testear la aplicación en el dispositivo con el siguiente comando:
 ```bash
 $ ionic run android
 ```
@@ -51,6 +53,3 @@ $ ionic run android
 $ ionic resources
 ```
 3. Listo.
-
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/docs/v2/getting-started/) page.
