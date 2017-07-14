@@ -17,7 +17,7 @@ Login Con jwt Firebase: El login está diseñado para que un usuario con correo 
 Le pega a firebaseAuth y además hace una validación en un WS de usuarios online.
 Cuenta con los botones para ingresar con los usuarios de testing harcodeados. Ademas valida que los campos no estén vacios y correspondan a un email y password.
 
-## Tareas
+### Tareas
 
 - Generación de estilos de login
 - Validación de usuario
@@ -76,6 +76,27 @@ Las encuestas Completadas son aquellas que el usuario ya terminó.
 - Al acceder a encuestas completadas se listan las encuestas que el usuario ya completó. Al acceder a cada encuesta se listan las preguntas y respuestas del alumno.
 - Al acceder a Mi ubicacion (geolocalizacion) e podra ubicar en un mapa la ubicacion actual del usuario logueado y si el mismo esta cerca de la UTN FRA visualizara la marca de ubicacion de la facultad.
 
+## Traducciones
+
+La aplicación cuenta con diferentes traducciones. Al iniciar sesión cada usuario tiene asignado un idioma, en base a este cambia todo el idioma de la aplicación.
+
+### Información de cómo se agragaron las traducciones
+
+1. Se instaló el plugin de traducción:
+```bash
+$ npm install @ngx-translate/core @ngx-translate/http-loader --save
+```
+2. Se creó la carpeta "assets/i18n".
+3. Se crearon los archivos de traduccion es.json y en.json  dentro de la carpeta creada en el paso 1.
+4. Se agregaron las traducciones en cada archivo json con sus respectivas traducciones en formato json. Ej:
+```json
+{
+        "titulo": "Mi título",
+        "descripcion": "Mi descripción."
+}
+```
+5. Se agregó un algoritmo para detectar el idioma del usuario y en base a este cargar el archivo json correspondiente a traves del TranslateService.
+
 -----------------------
 
 ## Los elementos agregados de "FrameWork Ionic"
@@ -93,6 +114,7 @@ Las encuestas Completadas son aquellas que el usuario ya terminó.
 - $cordovaNativeAudio
 - $cordovaGeolocation
 - $cordovaFile
+- @ngx-translate/core @ngx-translate/http-loader
 
 ## Items generales agregados
 
