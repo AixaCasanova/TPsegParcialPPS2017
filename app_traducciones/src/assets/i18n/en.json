@@ -1,0 +1,12 @@
+{
+    "titulo": "Translates",
+    "idioma_actual": "Current language",
+    "seleccione_un_idioma": "Select language",
+    "espanol_ar": "Spanish (AR)",
+    "espanol_es": "Spanish (ES)",
+    "ingles": "English",
+    "portugues": "Portuguese",
+    "cambiar_idioma": "Change language",
+    "desarrollado_por": "Developed by",
+    "descripcion": "<p>This app is an example of how to work the Translate Service of Ionic Framework.</p><p>Please select a language and then press the \"Change language\" button to change the languge at runtime.</p>"
+}

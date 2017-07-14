@@ -1,0 +1,12 @@
+{
+    "titulo": "Traducciones",
+    "idioma_actual": "Idioma actual",
+    "seleccione_un_idioma": "Seleccione un idioma",
+    "espanol_ar": "Español (AR)",
+    "espanol_es": "Español (ES)",
+    "ingles": "Ingles",
+    "portugues": "Portugués",
+    "cambiar_idioma": "Aplicar idioma",
+    "desarrollado_por": "Desarrollado por",
+    "descripcion": "<p>Esta aplicación es un ejemplo de cómo funciona el servicio TranslateService de Ionic Framework.</p><p>Por favor, seleccione un idioma y luego presione el botón \"Aplicar idioma\" para cambiar el idioma en tiempo de ejecución.</p>"
+}
