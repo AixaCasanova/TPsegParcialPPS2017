@@ -1,10 +1,20 @@
 page-profesor {
 
-h3,h2,h1 {
-    color: white;
-}
-.fondo{
-    background-image: url("../assets/img/menu_profesor.jpg");
-    background-size: 400px 700px;
-}
+    h3,h2,h1 {
+        color: white;
+    }
+    .fondo{
+        background-image: url("../assets/img/menu_profesor.jpg");
+        background-size: 400px 700px;
+    }
+
+    ion-content{
+        backgruond: whitesmoke !important;
+    }
+
+
+    .toolbar-title{
+        white-space: normal !important;
+    }
+
 }

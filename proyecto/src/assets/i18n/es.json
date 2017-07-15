@@ -63,10 +63,14 @@
         "fecha": "Fecha"
     },
     "administrador": {
-        "titulo": "Administrador"
+        "titulo": "Administrador",
+        "bienvenido": "Bienvenido al perfíl del Administrador",
+        "descripcion": "En esta sección usted podrá ir a los diferentes ABM de los diferentes tipos de usuario, ABM de Cursos y ABM de Comisiones.<br>Utilice el menú superior para ir a las diferentes secciones."
     },
     "administrativo": {
-        "titulo": "Administrativo"
+        "titulo": "Administrativo",
+        "bienvenido": "Bienvenido al perfíl del Administrativo",
+        "descripcion": "En esta sección usted podrá ver las estadisticas de las encuestas (cantidad de respuestas por preguntas, cantidad de encuestas por curso, cantidad de alumnos por curso) y asignar Alumnos a Cursos.<br>Utilice el menú superior para ir a las diferentes secciones."
     },
     "encuesta": {
         "titulo": "Encuesta",
@@ -83,6 +87,7 @@
         "tipo_texto": "Tipo: Texto",
         "tipo_una_opcion": "Tipo: Una opción",
         "multiples_opciones": "Tipo: Múltiples opciones",
+        "tipo_multiples_opciones": "Tipo: Múltiples opciones",
         "pregunta_agregada_ok": "Pregunta agregada con éxito!",
         "pregunta_eliminada_ok": "Pregunta eliminada existosamente!"
     },
@@ -101,7 +106,9 @@
         "descripcion": "Deslice a la derecha sobre la encuesta para agregar preguntas en la encuesta<br>Deslice a la izquierda sobre la encuesta para borrar la encuesta",
         "pregunta_agregada_ok": "Pregunta agregada con éxito!",
         "encuesta_agregada_ok": "Encuesta agregada con éxito!",
-        "encuesta_eliminada_ok": "Encuesta borrada con éxito!"
+        "encuesta_eliminada_ok": "Encuesta borrada con éxito!",
+        "ver": "Ver",
+        "borrar": "Borrar"
     },
     "modales": {
         "agregar_pregunta": "Agregar pregunta",
@@ -168,7 +175,9 @@
         "utn_fra": "UTN FRA"
     },
     "profesor": {
-        "titulo": "Profesor"
+        "titulo": "Profesor",
+        "bienvenido": "Bienvenido al perfíl del Profesor",
+        "descripcion": "En esta sección usted podrá Crear encuestas, agregar o eliminar preguntas en una encuesta y ademas podra Asignar encuestas a cursos.<br>Utilice el menú superior para ir a las diferentes secciones."
     },
     "servicioAuth": {
         "ingrese_credenciales": "Por favor inserte las credenciales"

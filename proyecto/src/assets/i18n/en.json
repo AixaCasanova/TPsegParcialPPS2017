@@ -32,7 +32,7 @@
         "msg_no_internet": "You probably do not have Internet. Check your connection.",
         "usuario_no_existe": "The user does not exist or entered invalid data.",
         "Administrador": "Administrator",
-        "Administrativo": "Administrtive",
+        "Administrativo": "Administrative",
         "Alumno": "Student",
         "Profesor": "Teacher"
     },
@@ -63,10 +63,14 @@
         "fecha": "Date"
     },
     "administrador": {
-        "titulo": "Administrator"
+        "titulo": "Administrator",
+        "bienvenido": "Welcome to the Administrator profile",
+        "descripcion": "In this section you will be able to go to the different CRUD of the different types of user, CRUD of Courses and CRUD of Commissions.<br>Use the top menu to go to the different sections."
     },
     "administrativo": {
-        "titulo": "Administrative"
+        "titulo": "Administrative",
+        "bienvenido": "Welcome to the Administrative profile",
+        "descripcion": "In this section you will be able to see the survey statistics (number of answers per question, number of surveys per course, number of students per course) and assign Students to Courses. <br> Use the top menu to go to the different sections."
     },
     "encuesta": {
         "titulo": "Survey",
@@ -83,6 +87,7 @@
         "tipo_texto": "Type: Text",
         "tipo_una_opcion": "Type: One option",
         "multiples_opciones": "Type: Multiple choices",
+        "tipo_multiples_opciones": "Type: Multiple choices",
         "pregunta_agregada_ok": "Question added successfully!",
         "pregunta_eliminada_ok": "Question removed successfully!"
     },
@@ -101,7 +106,9 @@
         "descripcion": "Slide right on a survey to add questions to the survey <br> Slide to the left on a survey to delete the survey",
         "pregunta_agregada_ok": "Question added successfully!",
         "encuesta_agregada_ok": "Survey added successfully!",
-        "encuesta_eliminada_ok": "Survey removed successfully!"
+        "encuesta_eliminada_ok": "Survey removed successfully!",
+        "ver": "View",
+        "borrar": "Delete"
     },
     "modales": {
         "agregar_pregunta": "Add question",
@@ -141,12 +148,12 @@
         "titulo": "Menu",
         "mis_encuestas": "My Surveys",
         "mi_ubicacion": "My Location",
-        "abm_profesores": "ABM Teachers",
-        "abm_alumnos": "ABM Students",
-        "abm_administrativos": "ABM Administratives",
-        "abm_administradores": "ABM Administrators",
-        "abm_comisiones": "ABM Commissions",
-        "abm_cursos": "ABM Courses",
+        "abm_profesores": "CRUD Teachers",
+        "abm_alumnos": "CRUD Students",
+        "abm_administrativos": "CRUD Administratives",
+        "abm_administradores": "CRUD Administrators",
+        "abm_comisiones": "CRUD Commissions",
+        "abm_cursos": "CRUD Courses",
         "cant_respuestas_por_preguntas": "Number of answers per question",
         "cant_encuestas_por_curso": "Number of surveys per course",
         "cant_alumnos_por_curso": "Number of students per course",
@@ -168,7 +175,9 @@
         "utn_fra": "UTN FRA"
     },
     "profesor": {
-        "titulo": "Teacher"
+        "titulo": "Teacher",
+        "bienvenido": "Welcome to the Teacher profile",
+        "descripcion": "In this section you can create surveys, add or delete questions in a survey and you can also assign surveys to courses. <br>Use the top menu to go to the different sections."
     },
     "servicioAuth": {
         "ingrese_credenciales": "Please enter your credentials"

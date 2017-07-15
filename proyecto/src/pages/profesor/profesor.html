@@ -5,10 +5,21 @@
       </button>
     <ion-title >{{ "profesor.titulo" | translate }}</ion-title>
   </ion-navbar>
-</ion-header >
+</ion-header>
 
-<ion-content class="fondo">
-  <div align="center">
+<ion-content padding>
 
-</div>
+    <ion-grid>
+        <ion-row align-items-start>
+            <ion-col text-center>
+                <ion-title>{{ 'profesor.bienvenido' | translate }}</ion-title>
+            </ion-col>
+        </ion-row>
+        <ion-row align-items-center>
+            <ion-col text-center>
+                <p [innerHTML]="'profesor.descripcion' | translate"></p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>

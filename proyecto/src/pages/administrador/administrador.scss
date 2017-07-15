@@ -1,6 +1,14 @@
 page-administrador {
-.fondo{
-    background-image: url("../assets/img/menu_administrador.jpg");
-    background-size: 400px 700px;
-}
+    .fondo{
+        background-image: url("../assets/img/menu_administrador.jpg");
+        background-size: 400px 700px;
+    }
+
+    ion-content{
+        backgruond: whitesmoke !important;
+    }
+
+    .toolbar-title{
+        white-space: normal !important;
+    }
 }
