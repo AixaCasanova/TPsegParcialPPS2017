@@ -59,15 +59,17 @@ $app->get('/', function ($request, $response, $args) {
 
 
 
+$app->get('/algo', function ($request, $response, $args) {
+
+   $var = Usuario::traeralgo();
+   echo $var;
+
+});
 
 
-/**
- * @api {get} /usuarios/ Trae la lista de usuarios
- * @apiName getUsuarios
- * @apiGroup Usuarios
- * @apiSuccess {array} lista de usuarios en el ws.
 
- */
+
+
 
 $app->get('/usuarios', function ($request, $response, $args) {
 
@@ -94,22 +96,72 @@ $app->get('/usuarios', function ($request, $response, $args) {
 
 //--aixa------------------------------------------
 
+$app->post('/traerEstilos', function ($request, $response, $args) {
 
-/**
- * @api {post} /usuarios/modificar Modifica un usuario, segun su ID
- * @apiName  Modificar Usuario
- * @apiGroup Usuarios
- *
- * @apiParam {object} el usuario a modificar.
- *
- * @apiSuccess {boolean} hayError el si hay error en la consulta.
- * @apiSuccess {int} id_usuario el id del usuario modificado.
- * @apiSuccess {int} id_tipo tipo usuario modificado.
- * @apiSuccess {String} nombre nombre del usuario modificado.
- * @apiSuccess {String} clave clave del usuario modificado.
- * @apiSuccess {text} imagen imagen del usuario modificado.
+   $usuario = $request->getParsedBody();
 
- */
+    // convierto el array en un objecto
+    $usuario = (object)$usuario;
+
+  $estilo=Usuario::TraerElEstilo($usuario);
+
+ return json_encode($estilo);
+
+});
+
+
+$app->post('/traerConfMiEstilo', function ($request, $response, $args) {
+
+   $usuario = $request->getParsedBody();
+
+    // convierto el array en un objecto
+    $usuario = (object)$usuario;
+
+  $estilo=Usuario::traerConfMiEstilo($usuario);
+
+  return json_encode($estilo);
+ 
+});
+
+
+
+$app->post('/modificarestilo', function ($request, $response, $args) {
+
+    // Obtengo la data enviada. Es recibida como un array.
+    $usuario = $request->getParsedBody();
+
+    // convierto el array en un objecto
+    $usuario = (object)$usuario;
+
+    $ret = Usuario::ModificarEstilo($usuario);
+
+    $hayError = false;
+
+    if ($ret) {
+        $hayError = false;
+    } else {
+        $hayError = true;
+    }
+
+    $response->withHeader('Content-Type', 'application/json');
+    $response->write(json_encode(array('error' => $hayError, 'usuario' => $usuario)));
+
+   return $response;
+    // return json_encode($usuario);
+
+});
+
+$app->post('/convCurso', function ($request, $response, $args) {
+
+    // Obtengo la data enviada. Es recibida como un array.
+    $curso = $request->getParsedBody();
+
+    // convierto el array en un objecto
+    $curso = (object)$curso;
+ 
+   return json_encode($curso); 
+});
+
 
 $app->post('/usuarios/modificar', function ($request, $response, $args) {
 
@@ -137,19 +189,6 @@ $app->post('/usuarios/modificar', function ($request, $response, $args) {
 });
 
 
-/**
- * @api {post} /usuarios/eliminar/ Elimina un usuario segun su id
- * @apiName eliminar usuario
- * @apiGroup Usuarios
- * @apiParam {Object} objetoUsuario  objeto del usuario a borrar.
- * @apiSuccess {boolean} hayError el si hay error en la consulta.
- * @apiSuccess {int} id_usuario el id del usuario modificado.
- * @apiSuccess {int} id_tipo tipo usuario modificado.
- * @apiSuccess {String} nombre nombre del usuario modificado.
- * @apiSuccess {String} clave clave del usuario modificado.
- * @apiSuccess {text} imagen imagen del usuario modificado.
- */
-
 $app->post('/usuarios/eliminar', function ($request, $response, $args) {
 
     // Obtengo la data enviada. Es recibida como un array.
@@ -174,18 +213,6 @@ $app->post('/usuarios/eliminar', function ($request, $response, $args) {
     return $response;
 
 });
-
-/**
- * @api {post} /usuarios/alta/{usuario} Da de alta un usuario nuevo
- * @apiName crear usuario
- * @apiGroup Usuarios
- *
- * @apiParam {array} arrayUsuario array del usuario a crear.
- *
- * @apiSuccess {boolean} hayError el si hay error en la consulta.
- * @apiSuccess {int} id_usuario el id del usuario insertado.
- 
- */
 
 $app->post('/usuarios/alta', function ($request, $response, $args) {
 
@@ -220,14 +247,48 @@ $app->post('/usuarios/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /comisiones/ Trae todas las comisiones
- * @apiName traer todas las comisiones
- * @apiGroup Comisiones
- *
- * @apiSuccess {array} array de comisiones.
 
- */
+
+$app->post('/usuarios/guardarmiestilo', function ($request, $response, $args) {
+
+
+        $usuario = $request->getParsedBody();
+
+        
+        $usuario = (object)$usuario;
+ 
+
+        $ret = Usuario::GuardarMiEstilo($usuario);
+
+        $ret2 = Usuario::TraerUltimoID();
+        $hayError = false;
+
+        
+
+        return  json_encode($ret2);
+
+});
+
+
+
+$app->post('/TodosMisEstilos', function ($request, $response, $args) {
+
+
+        $usuario = $request->getParsedBody();
+
+        
+        $usuario = (object)$usuario;
+ 
+
+        $ret = Usuario::TodosMisEstilos($usuario);
+         
+
+        return  json_encode($ret);
+});
+
+
+
+
 $app->get('/comisiones', function ($request, $response, $args) {
 
 
@@ -238,18 +299,6 @@ $app->get('/comisiones', function ($request, $response, $args) {
 
 
 });
-
-/**
- * @api {post} /comisiones/modificar/ modifica la comision
- * @apiName modificar comision
- * @apiGroup Comisiones
- *
- * @apiParam {object} objetoComision la Comision a modificar.
- *
- * @apiSuccess {boolean} hayError true o false si se realizo o no.
- * @apiSuccess {int} id_comision id de la comision modificada.
- * @apiSuccess {String} descripcion descripcion de la comision modificada.
- */
 $app->post('/comisiones/modificar', function ($request, $response, $args) {
 
 
@@ -276,18 +325,6 @@ $app->post('/comisiones/modificar', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {post} /comisiones/eliminar/ elimina la comision
- * @apiName eliminar comision
- * @apiGroup Comisiones
- *
- * @apiParam {object} objetoComision la Comision a eliminar.
- *
-  * @apiSuccess {boolean} hayError true o false si se realizo o no.
- * @apiSuccess {int} id_comision id de la comision modificada.
- * @apiSuccess {String} descripcion descripcion de la comision modificada.
- */
- 
 $app->post('/comisiones/eliminar', function ($request, $response, $args) {
 
 
@@ -313,20 +350,6 @@ $app->post('/comisiones/eliminar', function ($request, $response, $args) {
     return $response;
 
 });
-
-/**
- * @api {post} /comisiones/alta/ da de alta una nueva comision
- * @apiName alta comision
- * @apiGroup Comisiones
- *
- * @apiParam {array}  arrayComision la Comision a dar de alta.
- *
-  * @apiSuccess {boolean} hayError true o false si se realizo o no.
- * @apiSuccess {int} id_comision ultimo id de la comision insertada.
- */
- */
-
- */
 
 $app->post('/comisiones/alta', function ($request, $response, $args) {
 
@@ -355,15 +378,7 @@ $app->post('/comisiones/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /GrafRespuestasDePreguntas trae las respuestas por pregunta de las encuestas
- * @apiName respuestas de preguntas para grafico
- * @apiGroup Graficos
- *
- * @apiSuccess {array} RespuestasDePreguntas array de las respuestas por pregunta.
- */
 
- 
  $app->get('/GrafRespuestasDePreguntas', function ($request, $response, $args) {
 
 
@@ -374,15 +389,6 @@ $app->post('/comisiones/alta', function ($request, $response, $args) {
 
 });
 
-
-/**
- * @api {get} /GrafEncuestasPorCurso trae las encuenstas por curso
- * @apiName encuestas por curso
- * @apiGroup Graficos
- *
- * @apiSuccess {array} EncuestasxCurso las encuestas por curso asignado.
-
- */
   $app->get('/GrafEncuestasPorCurso', function ($request, $response, $args) {
 
 
@@ -393,14 +399,6 @@ $app->post('/comisiones/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /GrafAlumnosPorCurso trae los alumnos por curso
- * @apiName alumnos por curso
- * @apiGroup Graficos
- *
- * @apiSuccess {array} AlumnosXCurso devuelve los alumnos por curso.
-
- */
    $app->get('/GrafAlumnosPorCurso', function ($request, $response, $args) {
 
 
@@ -411,16 +409,6 @@ $app->post('/comisiones/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {post} /alumnoCurso/alta/ asigna un alumno al curso
- * @apiName alta alumno
- * @apiGroup Cursos
- *
- * @apiParam {object} el alumno a dar de alta.
- *
- * @apiSuccess {boolean} confirmacion devuelve true o false si se realizo.
-
- */
    $app->post('/alumnoCurso/alta', function ($request, $response, $args) {
 
 
@@ -450,17 +438,7 @@ $app->post('/comisiones/alta', function ($request, $response, $args) {
 
 
 //-------------------------------------------------------
-/**
- * @api {get} /usuarios/traer/{objeto} devuelve un usuario por su id
- * @apiName traer usuario especifico
- * @apiGroup Usuarios
- *
- * @apiSuccess {int} id_usuario el id del usuario buscado.
- * @apiSuccess {int} id_tipo tipo usuario buscado.
- * @apiSuccess {String} nombre nombre del usuario buscado.
- * @apiSuccess {String} clave clave del usuario buscado.
- * @apiSuccess {text} imagen imagen del usuario buscado.
- */
+
 $app->get('/usuarios/traer/{objeto}', function ($request, $response, $args) {
 
   $usuario=json_decode($args['objeto']);
@@ -473,15 +451,6 @@ $app->get('/usuarios/traer/{objeto}', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /cursos trae todos los cursos
- * @apiName traer cursos
- * @apiGroup Cursos
- * 
- *
- * @apiSuccess {array} ArrayDeCursos devuelve los curso.
-
- */
 $app->get('/cursos', function ($request, $response, $args) {
 
 
@@ -492,17 +461,6 @@ $app->get('/cursos', function ($request, $response, $args) {
 
 
 });
-
-/**
- * @api {post} /cursos/alta da de alta al curso 
- * @apiName alta De Curso
- * @apiGroup Cursos
- *
- * @apiParam {array} ArrayCurso array con los datos del curso
- *
- * @apiSuccess {boolean} hayError  confirmacion devuelve true o false si se realizo.
-
- */
 
 $app->post('/cursos/alta', function ($request, $response, $args) {
 
@@ -533,16 +491,7 @@ $app->post('/cursos/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /cursos/modificar modificar un curso especifico
- * @apiName modificacion de curso
- * @apiGroup Cursos
- *
- * @apiParam {objeto} objetoCurso objeto del curso a modificar
- *
- * @apiSuccess {boolean} hayError  confirmacion devuelve true o false si se realizo.
 
- */
 $app->post('/cursos/modificar', function ($request, $response, $args) {
 
 
@@ -572,20 +521,6 @@ $app->post('/cursos/modificar', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {post} /cursos/eliminar elimina un curso especifico
- * @apiName eliminar curso
- * @apiGroup Cursos
- *
- * @apiParam {objeto} objetoCurso objeto del curso a eliminar
- *
- * @apiSuccess {boolean} hayError  confirmacion devuelve true o false si se realizo.
- * @apiSuccess {int} id_curso id del curso eliminado.
- * @apiSuccess {int} id_comision id comision del curso eiminado.
- * @apiSuccess {int} id_usuario id usuario del curso eliminado.
- * @apiSuccess {string} descripcion descripcion del curso eliminado.
- */
-
 $app->post('/cursos/eliminar', function ($request, $response, $args) {
 
 
@@ -612,14 +547,7 @@ $app->post('/cursos/eliminar', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {delete} /usuarios/borrar/{objeto} elimina un usuario segun id
- * @apiName eliminar usuario
- * @apiGroup Usuarios
- *
- * @apiSuccess {boolean} Confirmacion devuelve true o false segun si se elimino o no.
 
- */
 $app->delete('/usuarios/borrar/{objeto}', function ($request, $response, $args) {
 
         $usuario=json_decode($args['objeto']);
@@ -633,14 +561,7 @@ $app->delete('/usuarios/borrar/{objeto}', function ($request, $response, $args) 
 
 
 
-/**
- * @api {get} /cursos traer todos los cursos
- * @apiName traer todos los cursos
- * @apiGroup Cursos
- *
- * @apiSuccess {array} ArrayDeCursos Todos los cursos.
 
- */
 
 $app->get('/curso', function ($request, $response, $args) {
 
@@ -653,14 +574,6 @@ $app->get('/curso', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {get} /encuestas traer todas las encuestas
- * @apiName traer todas las encuestas
- * @apiGroup Encuestas
- *
- * @apiSuccess {array} ArrayDeEncuestas Todos las encuestas.
-
- */
 $app->get('/encuestas', function ($request, $response, $args) {
 
 
@@ -671,17 +584,6 @@ $app->get('/encuestas', function ($request, $response, $args) {
 
 
 });
-
-/**
- * @api {post} /encuestas/alta alta de encuestas
- * @apiName alta encuestas
- * @apiGroup Encuestas
- *
- * @apiParam {array} array con los datos de la encuesta.
- *
- * @apiSuccess {number} id_encuesta devuelve el ultimo id insertado.
-
- */
 
 $app->post('/encuestas/alta', function ($request, $response, $args) {
 
@@ -698,17 +600,6 @@ $app->post('/encuestas/alta', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {post} /encuestas/borrar elimina la encuesta segun id
- * @apiName eliminar encuesta
- * @apiGroup Encuestas
- *
- * @apiParam {object} objeto de la encuesta a eliminar.
- *
- * @apiSuccess {boolean} Confirmacion devuelve true o false si se elimino o no.
-
- */
-
 $app->post('/encuestas/borrar', function ($request, $response, $args) {
 
         $encuesta = $request->getParsedBody();
@@ -724,16 +615,6 @@ $app->post('/encuestas/borrar', function ($request, $response, $args) {
 
 });
 
-/**
- * @api {post} /encuestas/enviar asigna una encuesta a un curso
- * @apiName enviar encuesta
- * @apiGroup Encuestas
- *
- * @apiParam {objeto} Encuesta objeto encuesta asignar.
- *
- * @apiSuccess {boolean} devuelve true o false si se realizo o no.
-
- */
 $app->post('/encuestas/enviar', function ($request, $response, $args) {
 
 
@@ -748,17 +629,6 @@ $app->post('/encuestas/enviar', function ($request, $response, $args) {
 
 
 });
-
-/**
- * @api {post} /pregunta/alta alta de preguntas
- * @apiName alta preguntas
- * @apiGroup Preguntas
- *
- * @apiParam {array} Array  datos de la pregunta.
- *
- * @apiSuccess {number} id el ultimo id insertado.
-
- */
 
 $app->post('/pregunta/alta', function ($request, $response, $args) {
 

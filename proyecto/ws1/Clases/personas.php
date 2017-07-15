@@ -12,6 +12,8 @@ class Usuario
 	public $nombre;
 	public $tipo_usuario;
 	public $imagen;
+	public $estilo;
+	public $idioma;
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
@@ -36,6 +38,16 @@ class Usuario
 	public function Getnombre()
 	{
 		return $this->nombre;
+	}
+
+	public function Getestilo()
+	{
+		return $this->estilo;
+	}
+
+	public function Setestilo($parametro)
+	{
+		 $this->estilo = $parametro;
 	}
 
 	public function Setnombre($parametro)
@@ -135,11 +147,35 @@ class Usuario
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 		//$consulta =$objetoAccesoDato->RetornarConsulta("select * from persona");
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT u.id_usuario, t.descripcion tipo_usuario, u.nombre, u.usuario, u.clave, u.id_tipo, u.imagen FROM usuarios u, tipos_usuarios t where u.id_tipo=t.id_tipo");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT u.id_usuario, t.descripcion tipo_usuario, u.nombre, u.usuario, u.clave, u.id_tipo, u.imagen, u.idioma FROM usuarios u, tipos_usuarios t where u.id_tipo=t.id_tipo");
 		$consulta->execute();
 		$arrEmpleado= $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");
 		return $arrEmpleado;
 	}
+
+	public static function TraerElEstilo($usuario)
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		//$consulta =$objetoAccesoDato->RetornarConsulta("select * from persona");
+		$consulta =$objetoAccesoDato->RetornarConsulta("select estilo from usuarios WHERE id_usuario = :id_usuario");
+		$consulta->bindValue(':id_usuario',$usuario->id_usuario, PDO::PARAM_INT);
+		$consulta->execute();
+		$arrEmpleado= $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");
+		return $arrEmpleado;
+	}
+
+	public static function traerConfMiEstilo($usuario)
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		//$consulta =$objetoAccesoDato->RetornarConsulta("select * from persona");
+		$consulta =$objetoAccesoDato->RetornarConsulta("select e.* from usuarios u , estilos e WHERE e.estilo = u.estilo and u.id_usuario = :id_usuario");
+		$consulta->bindValue(':id_usuario',$usuario->id_usuario, PDO::PARAM_INT);
+		$consulta->execute();
+		$arrEmpleado= $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");
+		return $arrEmpleado;
+	}
+
+
 
 public static function TraerTodosLosClientes()
 	{
@@ -174,6 +210,54 @@ public static function TraerTodosLosClientes()
 
 	}
 
+			public static function TraerUltimoID()
+	{
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT nombre FROM  estilos order by estilo desc LIMIT 0 , 1");
+
+		$consulta->execute();
+		 $tipobusc= $consulta->fetchObject('Usuario');
+
+		return $tipobusc;
+
+	}
+
+	public static function TodosMisEstilos($usuario)
+	{
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM  estilos where id_usuario = :id_usuario");
+		$consulta->bindValue(':id_usuario', $usuario->id_usuario, PDO::PARAM_INT);
+		$consulta->execute();
+		 $res= $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");
+
+		return $res;
+
+
+	}
+
+
+
+	public static function GuardarMiEstilo($usuario)
+	{
+	     $sql = 'INSERT INTO estilos (nombre, rutaFondo, rutaIcono, codigocolor1, estilopropio,id_usuario) VALUES(:nombre, :rutaFondo, :rutaIcono, :codigocolor1, 1, :id_usuario)';
+
+	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+	    $consulta =$objetoAccesoDato->RetornarConsulta($sql);
+	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+	    $consulta->bindValue(':nombre',$usuario->nombre, PDO::PARAM_STR);
+	    $consulta->bindValue(':rutaFondo',$usuario->rutaFondo, PDO::PARAM_STR);
+	    $consulta->bindValue(':rutaIcono', $usuario->rutaIcono, PDO::PARAM_STR);
+	    $consulta->bindValue(':codigocolor1', $usuario->codigocolor1, PDO::PARAM_STR);
+	     $consulta->bindValue(':id_usuario', $usuario->id_usuario, PDO::PARAM_INT);
+
+
+	    return $consulta->execute();
+	}
+
+
+
 
 public static function TraerClientesEmpleados()
 	{
@@ -200,7 +284,13 @@ public static function TraerClientesEmpleados()
 
 	public static function ModificarUsuario($usuario)
 	{
-	    $sql = 'UPDATE usuarios SET usuario = :usuario, nombre = :nombre, clave = :clave, id_tipo = :id_tipo, imagen = :imagen WHERE id_usuario = :id_usuario';
+	    $sql = 'UPDATE usuarios SET usuario = :usuario, nombre = :nombre, clave = :clave, id_tipo = :id_tipo, imagen = :imagen, idioma = :idioma WHERE id_usuario = :id_usuario';
+
+		$idioma = 'es';
+
+		if (isset($usuario->idioma) && in_array($usuario->idioma, array('es', 'en', 'pr'))) {
+			$idioma = $usuario->idioma;
+		}
 
 	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 	    $consulta =$objetoAccesoDato->RetornarConsulta($sql);
@@ -210,6 +300,7 @@ public static function TraerClientesEmpleados()
 	    $consulta->bindValue(':nombre', $usuario->nombre, PDO::PARAM_STR);
 	    $consulta->bindValue(':clave', $usuario->clave, PDO::PARAM_STR);
 	    $consulta->bindValue(':id_tipo', $usuario->id_tipo, PDO::PARAM_INT);
+	    $consulta->bindValue(':idioma', $idioma, PDO::PARAM_STR);
 
 		if (isset($usuario->imagen)) {
 			$consulta->bindValue(':imagen', $usuario->imagen, PDO::PARAM_STR);
@@ -222,11 +313,30 @@ public static function TraerClientesEmpleados()
 	}
 
 
+	public static function ModificarEstilo($usuario)
+	{
+	    $sql = 'UPDATE usuarios SET estilo = (select estilo from estilos where nombre = :nombre) WHERE id_usuario = :id_usuario';
+
+	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+	    $consulta =$objetoAccesoDato->RetornarConsulta($sql);
+	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+	    $consulta->bindValue(':nombre', $usuario->estilo, PDO::PARAM_STR);
+	    $consulta->bindValue(':id_usuario',$usuario->id_usuario, PDO::PARAM_INT);
+
+	    return $consulta->execute();
+	}
+
 
 
 	public static function AltaUsuario($usuario)
 	{
-	    $sql = 'INSERT INTO usuarios (id_tipo, nombre, usuario, clave, imagen) VALUES(:id_tipo, :nombre, :usuario,  :clave, :imagen)';
+	    $sql = 'INSERT INTO usuarios (id_tipo, nombre, usuario, clave, imagen, estilo, idioma) VALUES(:id_tipo, :nombre, :usuario,  :clave, :imagen, 1, :idioma)';
+
+		$idioma = 'es';
+
+		if (isset($usuario->idioma) && in_array($usuario->idioma, array('es', 'en', 'pr'))) {
+			$idioma = $usuario->idioma;
+		}
 
 	    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 	    $consulta =$objetoAccesoDato->RetornarConsulta($sql);
@@ -236,6 +346,7 @@ public static function TraerClientesEmpleados()
 	    $consulta->bindValue(':nombre', $usuario->nombre, PDO::PARAM_STR);
 	    $consulta->bindValue(':clave', $usuario->clave, PDO::PARAM_STR);
 	    $consulta->bindValue(':id_tipo', $usuario->id_tipo, PDO::PARAM_INT);
+	    $consulta->bindValue(':idioma', $idioma, PDO::PARAM_STR);
 
 		if (isset($usuario->imagen)) {
 			$consulta->bindValue(':imagen', $usuario->imagen, PDO::PARAM_STR);
@@ -243,7 +354,7 @@ public static function TraerClientesEmpleados()
 			$consulta->bindValue(':imagen', '', PDO::PARAM_STR);
 
 		}
-		
+
 	    return $consulta->execute();
 	}
 //--------------------------------------------------------------------------------//
