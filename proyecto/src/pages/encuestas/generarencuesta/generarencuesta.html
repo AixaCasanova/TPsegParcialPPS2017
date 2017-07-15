@@ -6,39 +6,43 @@
         <ion-title>{{ 'generarencuesta.titulo' | translate }}</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content class="fondo">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <ion-list>
-        <ion-card>
-            <ion-card-content class="card" [innerHTML]="'generarencuesta.descripcion' | translate">                
-            </ion-card-content>
-        </ion-card>
-    </ion-list>
-    <div>
-    </div>
+<ion-content class="fondo" padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <p [innerHTML]="'generarencuesta.descripcion' | translate">
+
+                </p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
     <ion-list *ngIf="!cargando">
         <ion-item-sliding *ngFor="let encuesta of listaEncuestas; let i = index; trackBy: descripcion">
-            <ion-item class="fondo"> <!--(click)="verEncuesta(encuesta)"-->
-                <ion-avatar item-left>
-                </ion-avatar>
+            <ion-item (click)="verEncuesta(encuesta)">
                 <h2>{{encuesta.descripcion}}</h2>
             </ion-item>
-            <ion-item-options side="right" class="fondoEncu">
-                <ion-icon name="plus"></ion-icon>
-                <img src="assets/img/nueva_pregunta.png" width=50 height=50 (click)="verEncuesta(encuesta)">
+
+            <ion-item-options side="left">
+                <button ion-button color="danger" (click)="BorrarEncuesta(encuesta.id_encuesta)">
+                    <ion-icon name="trash" ></ion-icon>
+                    {{ 'generarencuesta.borrar' | translate }}
+                </button>
             </ion-item-options>
-            <ion-item-options side="left" class="fondoEncu">
-                <img src="assets/img/eliminar_encuesta.png" width=50 height=50 (click)="BorrarEncuesta(encuesta.id_encuesta)">
+
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="verEncuesta(encuesta)">
+                    <ion-icon name="create"></ion-icon>
+                    {{ 'generarencuesta.ver' | translate }}
+                </button>
             </ion-item-options>
-            <ion-icon ios="ios-add" md="md-add"></ion-icon>
         </ion-item-sliding>
     </ion-list>
-    <!--&nbsp;&nbsp;&nbsp;<a href="#" class="myButton" (click)="nuevaEncuesta()">Nueva Encuesta</a>-->
-    <!--&nbsp;&nbsp;&nbsp;<button ion-button type="button" (click)="nuevaEncuesta()" color="primary-color">Nueva Encuesta</button>
--->
-<ion-fab bottom right *ngIf="!cargando">
-    <button ion-fab (tap)="nuevaEncuesta()" color="PRIMARY">
-        <ion-icon name="add"></ion-icon>
-    </button>
-</ion-fab>
+
+    <ion-fab bottom right *ngIf="!cargando">
+        <button ion-fab (tap)="nuevaEncuesta()" color="PRIMARY">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+
+</ion-content>
