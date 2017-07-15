@@ -167,7 +167,8 @@
         "Alumno": "Student",
         "Administrador": "Administrator",
         "Administrativo": "Administrative",
-        "perfil_modificado_ok": "Successfully modified profile!"
+        "perfil_modificado_ok": "Successfully modified profile!",
+        "resultados_por_alumno": "Results per student"
     },
     "miubicacion" : {
         "titulo": "Geolocation UTN",

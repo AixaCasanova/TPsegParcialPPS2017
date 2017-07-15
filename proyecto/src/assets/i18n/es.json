@@ -167,7 +167,8 @@
         "Alumno": "Alumno",
         "Administrador": "Administrador",
         "Administrativo": "Administrativo",
-        "perfil_modificado_ok": "Perfíl modificado con éxito!"
+        "perfil_modificado_ok": "Perfíl modificado con éxito!",
+        "resultados_por_alumno": "Resultados por alumno"
     },
     "miubicacion" : {
         "titulo": "Geolocalizacion UTN",

@@ -49,6 +49,9 @@
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(grafico3)" menuClose>
                 {{ 'menu.cant_alumnos_por_curso' | translate }}
             </button>
+            <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(resultado)" menuClose>
+                {{ 'menu.resultados_por_alumno' | translate }}
+            </button>
             <button *ngIf="usuarioLogueado.tipo_usuario == 'Administrativo'" ion-item (click)="openPage(alumnocurso)" menuClose>
                 {{ 'menu.alta_de_alumno_en_curso' | translate }}
             </button>
