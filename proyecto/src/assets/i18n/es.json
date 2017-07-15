@@ -1,8 +1,11 @@
 {
+    "espanol": "Español",
+    "ingles": "Ingles",
     "eliminar": "Eliminar",
     "cancelar": "Cancelar",
     "crear": "Crear",
     "guardar": "Guardar",
+    "editar": "Editar",
     "email": "Email",
     "nombre": "Nombre",
     "clave": "Clave",
@@ -27,7 +30,11 @@
         "inicio_sesion_github_no_autorizado": "El inicio de sesión con Github no fue autorizado.",
         "inicio_sesion_error": "Error al iniciar sesión: ",
         "msg_no_internet": "Es probable que no tengas Internet. Chequea tu conexión.",
-        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos."
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos.",
+        "Administrador": "Administrador",
+        "Administrativo": "Administrativo",
+        "Alumno": "Alumno",
+        "Profesor": "Profesor"
     },
     "alumno": {
         "titulo": "Alumno",
@@ -152,7 +159,8 @@
         "Profesor": "Profesor",
         "Alumno": "Alumno",
         "Administrador": "Administrador",
-        "Administrativo": "Administrativo"
+        "Administrativo": "Administrativo",
+        "perfil_modificado_ok": "Perfíl modificado con éxito!"
     },
     "miubicacion" : {
         "titulo": "Geolocalizacion UTN",
@@ -178,7 +186,8 @@
         "tipo_Alumno": "Alumno",
         "tipo_Administrativo": "Administrativo",
         "tipo_Administrador": "Administrador",
-        "tipo_Profesor": "Profesor"
+        "tipo_Profesor": "Profesor",
+        "idioma": "Idioma"
     },
     "alta-modal-cursos": {
         "titulo": "Alta de cursos",
@@ -293,7 +302,8 @@
         "resetear_clave_ok_title": "Clave reseteada con exito",
         "resetear_clave_ok_desc": "Se ha enviado un mail al usuario para que resetee la clave.",
         "resetear_clave_error_title": "Error al resetear la clave",
-        "mail_invalido": "Email inválido."
+        "mail_invalido": "Email inválido.",
+        "idioma": "Idioma"
     },
     "modificacion-modal-cursos": {
         "titulo": "Modificacion de cursos",

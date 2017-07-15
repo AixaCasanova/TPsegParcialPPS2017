@@ -1,8 +1,11 @@
 {
+    "espanol": "Spanish",
+    "ingles": "English",
     "eliminar": "Delete",
     "cancelar": "Cancel",
     "crear": "Create",
     "guardar": "Save",
+    "editar": "Edit",
     "email": "Email",
     "nombre": "Name",
     "clave": "Password",
@@ -27,7 +30,11 @@
         "inicio_sesion_github_no_autorizado": "Login with Github was not authorized.",
         "inicio_sesion_error": "Failed to login: ",
         "msg_no_internet": "You probably do not have Internet. Check your connection.",
-        "usuario_no_existe": "The user does not exist or entered invalid data."
+        "usuario_no_existe": "The user does not exist or entered invalid data.",
+        "Administrador": "Administrator",
+        "Administrativo": "Administrtive",
+        "Alumno": "Student",
+        "Profesor": "Teacher"
     },
     "alumno": {
         "titulo": "Student",
@@ -152,7 +159,8 @@
         "Profesor": "Teacher",
         "Alumno": "Student",
         "Administrador": "Administrator",
-        "Administrativo": "Administrative"
+        "Administrativo": "Administrative",
+        "perfil_modificado_ok": "Successfully modified profile!"
     },
     "miubicacion" : {
         "titulo": "Geolocation UTN",
@@ -178,7 +186,8 @@
         "tipo_Alumno": "Student",
         "tipo_Administrativo": "Administrative",
         "tipo_Administrador": "Administrator",
-        "tipo_Profesor": "Teacher"
+        "tipo_Profesor": "Teacher",
+        "idioma": "Language"
     },
     "alta-modal-cursos": {
         "titulo": "Registration of courses",
@@ -293,7 +302,8 @@
         "resetear_clave_ok_title": "Password reset successfully!",
         "resetear_clave_ok_desc": "An email has been sent to the user to reset the password.",
         "resetear_clave_error_title": "Failed to reset key",
-        "mail_invalido": "Invalid email."
+        "mail_invalido": "Invalid email.",
+        "idioma": "Language"
     },
     "modificacion-modal-cursos": {
         "titulo": "Modification of courses",

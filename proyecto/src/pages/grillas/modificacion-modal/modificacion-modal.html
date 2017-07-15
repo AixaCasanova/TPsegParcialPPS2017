@@ -11,7 +11,7 @@
         <ion-title text-center>{{ 'editar' | translate }}</ion-title>
 
         <ion-buttons end>
-            <button ion-button icon-only color="primary-color-text" [disabled]="n == ''" (tap)="Modificar(id_usuario, n, u, c, t)">
+            <button ion-button icon-only color="primary-color-text" [disabled]="n == '' || cargando" (tap)="Modificar(id_usuario, n, u, c, t, idioma)">
                 {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
@@ -38,7 +38,15 @@
             <a (tap)="resetearClave(u)">{{ 'resetear_clave' | translate }}</a>
         </ion-item>
 
-        <ion-list>
+        <ion-item>
+            <ion-label>{{ 'modificacion-modal.idioma' | translate }}:</ion-label>
+            <ion-select [(ngModel)]="idioma" >
+                <ion-option value="es">{{ 'espanol' | translate }}</ion-option>
+                <ion-option value="en">{{ 'ingles' | translate }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-list *ngIf="!ocultar_tipo">
             <ion-item>
                 <ion-label>{{ 'modificacion-modal.tipo' | translate }}</ion-label>
                 <ion-select [(ngModel)]="t">

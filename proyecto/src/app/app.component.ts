@@ -90,9 +90,7 @@ export class MyApp {
 
         if (this.isGitHubUser(user)) {
 
-            this.auth.currentUser = new User(user.uid, user.email, '', 'Profesor');
-            this.auth.currentUser.id_tipo = 4;
-            this.auth.currentUser.imagen = user.photoURL;
+            this.auth.currentUser = new User(user.uid, user.email, '', '', 4, 'Profesor', user.photoURL);
 
             this.nativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
             this.vibration.vibrate([100]);
@@ -107,6 +105,8 @@ export class MyApp {
                 this.vibration.vibrate([100]);
 
                 if (existe) {
+                    let user = this.auth.getUserInfo();         
+                    this.translate.use(user.idioma || 'es');
                     this.rootPage = Menu;
                 } else {
                     // No existe el usuario en la BD, pero si en firebase

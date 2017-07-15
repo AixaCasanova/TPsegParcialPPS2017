@@ -11,7 +11,7 @@
         <ion-title text-center>{{ 'crear' | translate }} {{ 'alta-modal.tipo_' + t | translate }}</ion-title>
 
         <ion-buttons end>
-            <button ion-button icon-only color="primary-color-text" [disabled]="u == '' || n == '' || c == ''" (tap)="Alta(n, u, c, id_tipo)">
+            <button ion-button icon-only color="primary-color-text" [disabled]="u == '' || n == '' || c == '' || cargando" (tap)="Alta(n, u, c, id_tipo, idioma)">
                 {{ 'guardar' | translate }}
             </button>
         </ion-buttons>
@@ -40,6 +40,14 @@
         <ion-item>
             <ion-label floating >{{ 'clave' | translate }}</ion-label>
             <ion-input type="password" [(ngModel)]="c" clearInput required> </ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>{{ 'alta-modal.idioma' | translate }}:</ion-label>
+            <ion-select [(ngModel)]="idioma" >
+                <ion-option value="es">{{ 'espanol' | translate }}</ion-option>
+                <ion-option value="en">{{ 'ingles' | translate }}</ion-option>
+            </ion-select>
         </ion-item>
 
         <ion-item>

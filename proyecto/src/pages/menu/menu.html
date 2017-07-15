@@ -60,9 +60,9 @@
                 {{ 'menu.asignar_encuesta' | translate }}
             </button>
 
-            <button ion-item (click)="ayuda()" menuClose>
+            <!--<button ion-item (click)="ayuda()" menuClose>
                 {{ 'menu.ayuda' | translate }}
-            </button>
+            </button>-->
             <button ion-item (click)="acercaDe()" menuClose>
                  {{ 'menu.acerca_de' | translate }}
             </button>
@@ -74,14 +74,14 @@
     </ion-content>
 
     <ion-footer>
-        <ion-item>
+        <button ion-item (click)="verPerfilDeUsuario(usuarioLogueado)">
             <ion-avatar item-left>
                 <img [src]="usuarioLogueado.imagen" *ngIf="usuarioLogueado.imagen">
             </ion-avatar>
 
             <h2>{{ usuarioLogueado.usuario }}</h2>
             <p>{{ 'menu.'+usuarioLogueado.tipo_usuario | translate }}</p>
-        </ion-item>
+        </button>
     </ion-footer>
 </ion-menu>
 

@@ -55,7 +55,7 @@ export class GrillaAlumno {
 
         }
 
-        Modificar(id_usuario, usuario, nombre, clave, id_tipo, imagen)
+        Modificar(id_usuario, usuario, nombre, clave, id_tipo, imagen, idioma = 'es')
         {
             let usM = {
                 id_usuario: id_usuario,
@@ -63,7 +63,8 @@ export class GrillaAlumno {
                 nombre: nombre,
                 clave: clave,
                 id_tipo: id_tipo,
-                imagen: imagen
+                imagen: imagen,
+                idioma: idioma
             };
             let modal = this.modalCtrl.create(ModificacionModal, usM);
             modal.onDidDismiss(data => {
@@ -137,7 +138,7 @@ export class GrillaAlumno {
                     {
                         text: this.LANG.editar,
                         handler: () => {
-                            this.Modificar(usr.id_usuario, usr.usuario, usr.nombre, usr.clave, usr.id_tipo, usr.imagen);
+                            this.Modificar(usr.id_usuario, usr.usuario, usr.nombre, usr.clave, usr.id_tipo, usr.imagen, usr.idioma);
                         }
                     },
                     {

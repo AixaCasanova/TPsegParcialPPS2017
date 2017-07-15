@@ -28,6 +28,7 @@ export class AltaModal
     id_usuario;
     id_tip;
     id_tipo;
+    idioma = 'es';
 
     base64Image;
 
@@ -66,11 +67,11 @@ export class AltaModal
         });
     }
 
-    Alta(nombre, usuario, clave, id_tipo)
+    Alta(nombre, usuario, clave, id_tipo, idioma)
     {
         console.log('Alta: ' + id_tipo);
 
-        if (nombre == null || nombre=="" ||usuario==null || usuario=="" || clave== null || clave=="" || id_tipo==null || id_tipo=="" ) {
+        if (nombre == null || nombre=="" || usuario==null || usuario=="" || clave== null || clave=="" || id_tipo==null || id_tipo=="" || idioma == '') {
             alert (this.LANG.debe_completar_campos);
         } else {
             this.cargando = true;
@@ -87,7 +88,8 @@ export class AltaModal
                         usuario: this.u,
                         tipo: this.t,
                         id_tipo: id_tipo,
-                        imagen: this.base64Image
+                        imagen: this.base64Image,
+                        idioma: idioma
                     })
                     .map(res => res.json())
                     .catch((error:any) => Observable.throw(error.json() || 'Server error'))

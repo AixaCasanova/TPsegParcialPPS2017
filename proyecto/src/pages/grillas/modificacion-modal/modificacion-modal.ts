@@ -22,12 +22,14 @@ export class ModificacionModal
     c;
     u;
     id_usuario;
+    idioma = 'es';
     http;
 
     width = 320;
     height = 320;
     base64Image;
     cargando = false;
+    ocultar_tipo = false;
 
     private LANG;
 
@@ -39,8 +41,11 @@ export class ModificacionModal
         this.t = navParams.data['id_tipo'];
         this.u = navParams.data['usuario'];
         this.id_usuario = navParams.data['id_usuario'];
+        this.idioma = navParams.data['idioma'];
         this.base64Image = navParams.data['imagen'];
         this.http = htt;
+        this.ocultar_tipo = typeof navParams.data['ocultar_tipo'] != 'undefined' ? navParams.data['ocultar_tipo'] : false;
+        console.log('ocultar_tipo: ', this.ocultar_tipo);
 
         translate.stream('modificacion-modal').subscribe((res: string) => {
             this.LANG = res;
@@ -61,24 +66,27 @@ export class ModificacionModal
         });
     }
 
-    Modificar(id_usuario, nombre, usuario, clave, id_tipo)
+    Modificar(id_usuario, nombre, usuario, clave, id_tipo, idioma = 'es')
     {
         this.cargando = true;
-        // Actualizo el usuario en la BD SQL
-        this.http.post("http://tppps2.hol.es/ws1/usuarios/modificar", {
+        let user = {
             id_usuario: id_usuario,
             id_tipo: id_tipo,
             clave: clave,
             nombre: nombre,
             usuario: usuario,
-            imagen: this.base64Image
-        })
+            imagen: this.base64Image,
+            idioma: idioma
+        };
+
+        // Actualizo el usuario en la BD SQL
+        this.http.post("http://tppps2.hol.es/ws1/usuarios/modificar", user)
         .map(res => res.json())
         .subscribe((quote) => {
             console.log('modificar response: ', quote);
 
             this.cargando = false;
-            this.viewCtrl.dismiss(true);
+            this.viewCtrl.dismiss(user);
         }, e => {
             this.cargando = false;
         });

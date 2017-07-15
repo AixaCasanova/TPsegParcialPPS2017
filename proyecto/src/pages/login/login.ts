@@ -249,25 +249,25 @@ export class Login {
             title: this.LANG.usuarios_test,
             buttons: [
                 {
-                    text: 'Administrador',
+                    text: this.LANG.Administrador,
                     handler: () => {
                         this.EscribirCredenciales('Administrador');
                     }
                 },
                 {
-                    text: 'Administrativo',
+                    text: this.LANG.Administrativo,
                     handler: () => {
                         this.EscribirCredenciales('Administrativo');
                     }
                 },
                 {
-                    text: 'Profesor',
+                    text: this.LANG.Profesor,
                     handler: () => {
                         this.EscribirCredenciales('Profesor');
                     }
                 },
                 {
-                    text: 'Alumno',
+                    text: this.LANG.Alumno,
                     handler: () => {
                         this.EscribirCredenciales('Alumno');
                     }

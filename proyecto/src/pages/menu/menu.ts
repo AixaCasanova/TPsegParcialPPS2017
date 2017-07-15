@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController,ViewController, NavParams,ModalController } from 'ionic-angular';
+import { IonicPage, NavController,ViewController, NavParams, ModalController, ToastController } from 'ionic-angular';
 
 import {Alumno} from "../alumno/alumno";
 import {Administrativo} from '../administrativo/administrativo';
@@ -25,7 +25,9 @@ import { AcercaDePage } from "../acerca-de-page/acerca-de-page";
 import { Miubicacion } from "../miubicacion/miubicacion";
 import { AngularFireAuth } from 'angularfire2/auth';
 import { servicioAuth } from '../servicioAuth/servicioAuth';
-import {Ayuda} from '../ayuda/ayuda';
+import { Ayuda } from '../ayuda/ayuda';
+import { ModificacionModal } from '../grillas/modificacion-modal/modificacion-modal';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'page-menu',
@@ -55,13 +57,12 @@ export class Menu {
     private alumnocurso;
     private miubicacion;
 
-    constructor(public navCtrl: NavController,public viewCtrl:ViewController, public navParams: NavParams,public afAuth: AngularFireAuth, public modalCtrl: ModalController, public auth: servicioAuth) {
+    private LANG;
 
-        console.log('navParams.data: ', navParams.data);
+    constructor(public navCtrl: NavController,public viewCtrl:ViewController, public navParams: NavParams,public afAuth: AngularFireAuth,
+        public modalCtrl: ModalController, public auth: servicioAuth, public toastCtrl: ToastController, private translate: TranslateService) {
 
         this.usuarioLogueado = (navParams.data && (Object.keys(navParams.data).length === 0)) ? this.auth.getUserInfo() : navParams.data;
-        console.log('this.usuario');
-        console.log(this.usuarioLogueado);
 
         this.initPages();
 
@@ -75,6 +76,10 @@ export class Menu {
         } else if (this.usuarioLogueado.tipo_usuario == 'Profesor') {
             this.openPage(this.profesorPage);
         }
+
+        translate.stream('menu').subscribe((res: string) => {
+            this.LANG = res;
+        });
 
     }
 
@@ -136,6 +141,36 @@ export class Menu {
       ayuda() {
         /** Ejecutar funcion para desloguear usuario. */
         this.openPage(Ayuda);
+    }
+
+    verPerfilDeUsuario (usuario) {
+
+        usuario.ocultar_tipo = true;
+
+        console.log(usuario);
+
+        let modal = this.modalCtrl.create(ModificacionModal, usuario);
+        modal.onDidDismiss(data => {
+            if (data) {
+                this.auth.currentUser.imagen = data.imagen;
+                this.translate.use(data.idioma);
+
+                setTimeout(() => {
+                    this.mostrarMensaje(this.LANG.perfil_modificado_ok);
+                    console.log(data);
+                }, 100);
+            }
+        });
+        modal.present();
+    }
+
+    mostrarMensaje (mensaje) {
+        let toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 3000,
+            position: 'bottom'
+        });
+        toast.present();
     }
 
 }
