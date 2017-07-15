@@ -108,7 +108,8 @@
         "encuesta_agregada_ok": "Survey added successfully!",
         "encuesta_eliminada_ok": "Survey removed successfully!",
         "ver": "View",
-        "borrar": "Delete"
+        "borrar": "Delete",
+        "sin_encuestas": "No surveys available."
     },
     "modales": {
         "agregar_pregunta": "Add question",

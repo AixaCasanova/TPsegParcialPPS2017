@@ -17,6 +17,10 @@
         </ion-row>
     </ion-grid>
 
+    <ion-item *ngIf="!cargando && listaEncuestas?.length == 0">
+        {{ 'generarencuesta.sin_encuestas' | translate }}
+    </ion-item>
+
     <ion-list *ngIf="!cargando">
         <ion-item-sliding *ngFor="let encuesta of listaEncuestas; let i = index; trackBy: descripcion">
             <ion-item (click)="verEncuesta(encuesta)">

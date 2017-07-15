@@ -108,7 +108,8 @@
         "encuesta_agregada_ok": "Encuesta agregada con éxito!",
         "encuesta_eliminada_ok": "Encuesta borrada con éxito!",
         "ver": "Ver",
-        "borrar": "Borrar"
+        "borrar": "Borrar",
+        "sin_encuestas": "No hay encuestas."
     },
     "modales": {
         "agregar_pregunta": "Agregar pregunta",
