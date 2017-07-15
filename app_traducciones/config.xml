@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.app_traducciones" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Traducciones</name>
   <description>Aplicación para mostrar como funcionan las traducciones en Ionic.</description>
   <author email="soporte@alejosotelo.com.ar" href="http://alejosotelo.com.ar/">Alejo Sotelo</author>
