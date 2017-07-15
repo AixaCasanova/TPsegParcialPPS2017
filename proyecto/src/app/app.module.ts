@@ -40,6 +40,7 @@ import {AltaModalCursos} from "../pages/grillas/alta-modal-cursos/alta-modal-cur
 import {Grafico1} from "../pages/graficos/grafico1/grafico1";
 import {Grafico2} from "../pages/graficos/grafico2/grafico2";
 import {Grafico3} from "../pages/graficos/grafico3/grafico3";
+import {Resultado} from "../pages/graficos/resultado/resultado";
 import {ChartsModule} from 'ng2-charts/charts/charts';
 import '../../node_modules/chart.js/dist/Chart.bundle.min.js';
 import { Camera } from '@ionic-native/camera';
@@ -100,7 +101,8 @@ export function createTranslateLoader(http: Http) {
         Miubicacion,
         AcercaDePage,
         EncuestaDetalle,
-        Ayuda
+        Ayuda,
+        Resultado
     ],
     imports: [
         BrowserModule,
@@ -153,7 +155,8 @@ export function createTranslateLoader(http: Http) {
         Miubicacion,
         AcercaDePage,
         EncuestaDetalle,
-        Ayuda
+        Ayuda,
+        Resultado
     ],
     providers: [
         StatusBar,
