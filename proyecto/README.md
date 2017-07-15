@@ -130,4 +130,4 @@ $ npm install @ngx-translate/core @ngx-translate/http-loader --save
 
 ## Tablas SQL
 
-<img src="esquema_tablas.jpg">
+<img src="https://raw.githubusercontent.com/AixaCasanova/TPsegParcialPPS2017/traducciones/esquema_tablas.jpg">
