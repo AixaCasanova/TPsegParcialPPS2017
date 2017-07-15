@@ -25,8 +25,8 @@
             <ion-item>
                 <ion-label floating>{{ 'modales.ingrese_tipo_pregunta' | translate }}</ion-label>
                 <ion-select [(ngModel)]="tipoPregunta">
-                    <ion-option value="1" selected></ion-option>
-                    <ion-option value="2"></ion-option>
+                    <ion-option value="1" selected>{{ 'modales.texto' | translate }}</ion-option>
+                    <ion-option value="2">{{ 'modales.una_opcion' | translate }}</ion-option>
                     <ion-option value="3">{{ 'modales.multiples_opciones' | translate }}</ion-option>
                 </ion-select>
             </ion-item>
