@@ -20,6 +20,7 @@ import {GrillaCurso} from "../grillas/grilla-curso/grilla-curso";
 import { Grafico1 } from "../graficos/grafico1/grafico1";
 import { Grafico2 } from "../graficos/grafico2/grafico2";
 import { Grafico3 } from "../graficos/grafico3/grafico3";
+import { Resultado } from "../graficos/resultado/resultado";
 import { AlumnoCurso } from "../alumno-curso/alumno-curso";
 import { AcercaDePage } from "../acerca-de-page/acerca-de-page";
 import { Miubicacion } from "../miubicacion/miubicacion";
@@ -56,6 +57,7 @@ export class Menu {
     private grafico3;
     private alumnocurso;
     private miubicacion;
+    private resultado = Resultado;
 
     private LANG;
 

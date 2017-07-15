@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title >{{titulo}}</ion-title>
+
+        <ion-buttons end>
+            <button *ngIf="!cargando" ion-button icon-only (tap)="cargarAlumno()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div *ngIf="cargando" text-center>
+        <ion-spinner text-center></ion-spinner>
+    </div>
+
+    <ion-item *ngIf="!cargando && resul?.length == 0">
+        {{ 'encuesta-alumno.sin_encuestas_respondidas' | translate }}
+    </ion-item>
+
+    <div *ngIf="!cargando">
+
+        <ion-card  *ngFor="let r of resul">
+            <ion-card-header color="{{micolor}}">
+                <strong> {{r.alumno}} </strong>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-item *ngFor="let pr of r.pregyresp">
+                    <h2><strong>{{pr.pregunta}}</strong></h2>
+                    <p>{{ 'encuesta-alumno.respuesta' | translate }}: {{pr.opcion}}</p>
+                </ion-item>
+            </ion-card-content>
+
+        </ion-card>
+    </div>
+
+</ion-content>

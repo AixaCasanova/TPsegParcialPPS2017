@@ -184,7 +184,8 @@
         "ingrese_credenciales": "Por favor inserte las credenciales"
     },
     "app-components" : {
-        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos."
+        "usuario_no_existe": "El usuario no existe o ingresó datos invalidos.",
+        "error_hostinguer": "Error al conectar con Hostinguer. Puede que esté caido."
     },
     "alta-modal": {
         "imagen": "Imagen",
@@ -320,5 +321,14 @@
         "nombre_del_curso": "Nombre del curso",
         "comision": "Comision",
         "profesor": "Profesor"
+    },
+    "resultado": {
+        "titulo": "Resultados por alumno",
+        "no_hay_encuestas": "No hay encuestas disponibles.",
+        "fecha": "Fecha"
+    },
+    "encuesta-alumno": {
+        "respuesta": "Respuesta",
+        "sin_encuestas_respondidas": "Sin encuestas respondidas."
     }
 }

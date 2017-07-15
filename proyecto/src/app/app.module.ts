@@ -58,6 +58,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { File } from '@ionic-native/file';
 import { EncuestaDetalle } from "../pages/encuesta-detalle/encuesta-detalle";
 import {Ayuda} from '../pages/ayuda/ayuda';
+import { EncuestaAlumno } from "../pages/encuesta-alumno/encuesta-alumno";
 
 /* Traducciones */
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -102,7 +103,8 @@ export function createTranslateLoader(http: Http) {
         AcercaDePage,
         EncuestaDetalle,
         Ayuda,
-        Resultado
+        Resultado,
+        EncuestaAlumno
     ],
     imports: [
         BrowserModule,
@@ -156,7 +158,8 @@ export function createTranslateLoader(http: Http) {
         AcercaDePage,
         EncuestaDetalle,
         Ayuda,
-        Resultado
+        Resultado,
+        EncuestaAlumno
     ],
     providers: [
         StatusBar,

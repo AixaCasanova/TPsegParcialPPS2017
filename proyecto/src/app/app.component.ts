@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Platform, Events, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Login} from "../pages/login/login";
@@ -27,7 +27,7 @@ export class MyApp {
     private LANG;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, private auth: servicioAuth,
-    private nativeAudio: NativeAudio,public vibration:Vibration, public authData: AuthData, private events: Events, private translate: TranslateService) {
+    private nativeAudio: NativeAudio,public vibration:Vibration, public authData: AuthData, private events: Events, private translate: TranslateService, public toastCtrl: ToastController) {
         this.splashScreen = splashScreen
         platform.ready().then(() => {
             console.log('platformReady');
@@ -57,7 +57,6 @@ export class MyApp {
 
         this.afAuth.authState.subscribe(user => {
             this.authReady = true;
-            this.hideSplashScreen();
 
             console.log('MyApp :: authState: ', user);
 
@@ -65,11 +64,14 @@ export class MyApp {
                 // go to home page
                 this.redirectAuthenticatedUser(user);
             } else {
+                this.hideSplashScreen();
                 // go to login page
                 this.rootPage = Login;
             }
 
         }, error => {
+            this.authReady = true;
+            this.hideSplashScreen();
             this.rootPage = Login;
         });
     }
@@ -90,6 +92,8 @@ export class MyApp {
 
         if (this.isGitHubUser(user)) {
 
+            this.hideSplashScreen();
+
             this.auth.currentUser = new User(user.uid, user.email, '', '', 4, 'Profesor', user.photoURL);
 
             this.nativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
@@ -105,7 +109,8 @@ export class MyApp {
                 this.vibration.vibrate([100]);
 
                 if (existe) {
-                    let user = this.auth.getUserInfo();         
+                    this.hideSplashScreen();
+                    let user = this.auth.getUserInfo();
                     this.translate.use(user.idioma || 'es');
                     this.rootPage = Menu;
                 } else {
@@ -116,16 +121,23 @@ export class MyApp {
 
                         this.events.publish('auth:login:no_existe', this.LANG.usuario_no_existe);
 
+                        this.hideSplashScreen();
                         this.rootPage = Login;
 
                     }, error => {
 
+                        this.hideSplashScreen();
                         this.events.publish('auth:login:no_existe', this.LANG.usuario_no_existe);
                         this.rootPage = Login;
 
                     });
                 }
-            }, error => {
+            }, (error) => {
+                if (error == 'hostinguer') {
+                    this.mostrarMensaje(this.LANG.error_hostinguer);
+                }
+
+                this.hideSplashScreen();
                 this.rootPage = Login;
             });
 
@@ -149,6 +161,15 @@ export class MyApp {
 
         return false;
 
+    }
+
+    mostrarMensaje (mensaje) {
+        let toast = this.toastCtrl.create({
+            message: mensaje,
+            duration: 3000,
+            position: 'bottom'
+        });
+        toast.present();
     }
 
 }

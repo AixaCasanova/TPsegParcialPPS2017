@@ -28,6 +28,7 @@ export class servicioAuth {
     public getUsuarioByUsuario (usuario) {
 
         return this.http.get('http://tppps2.hol.es/ws1/usuarios?usuario='+usuario)
+        .timeout(15000)
         .map(r => r.json());
 
     }
@@ -55,6 +56,8 @@ export class servicioAuth {
 
                     observer.complete();
 
+                }, (e) => {
+                    observer.error('hostinguer');
                 });
 
             });
